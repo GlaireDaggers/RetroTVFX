@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e42597acb91fef742b365e1cfee4f915
+timeCreated: 1469818311
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 8
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Px437 ATI 8x8
+  fontNames:
+  - Px437 ATI 8x8
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

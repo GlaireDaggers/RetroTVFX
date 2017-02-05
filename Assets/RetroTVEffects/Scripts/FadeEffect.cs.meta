@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e670f1e7095529b4fa98fe82dfcba4ed
+timeCreated: 1469900529
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - FadeShader: {fileID: 4800000, guid: 66da11341a5fe08489b0b483a3b09735, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
