@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroTVFX.Plugins", "RetroTVFX.Plugins.csproj", "{BF801FB6-2752-8EFB-2970-E30136CE46BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroTVFX", "RetroTVFX.csproj", "{96AF07BE-52DC-22F8-88C6-1C48976CAAA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroTVFX.Editor", "RetroTVFX.Editor.csproj", "{FF93FE90-0F8A-ABA7-0409-D38076763EAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF801FB6-2752-8EFB-2970-E30136CE46BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF801FB6-2752-8EFB-2970-E30136CE46BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF801FB6-2752-8EFB-2970-E30136CE46BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF801FB6-2752-8EFB-2970-E30136CE46BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AF07BE-52DC-22F8-88C6-1C48976CAAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AF07BE-52DC-22F8-88C6-1C48976CAAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AF07BE-52DC-22F8-88C6-1C48976CAAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AF07BE-52DC-22F8-88C6-1C48976CAAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF93FE90-0F8A-ABA7-0409-D38076763EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF93FE90-0F8A-ABA7-0409-D38076763EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF93FE90-0F8A-ABA7-0409-D38076763EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF93FE90-0F8A-ABA7-0409-D38076763EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

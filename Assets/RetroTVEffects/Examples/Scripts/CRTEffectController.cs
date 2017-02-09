@@ -14,7 +14,7 @@ public class CRTEffectController : MonoBehaviour
 	{
 		OnVideoModeChanged(1);
 		OnColorDepthChanged(0);
-		OnResChanged(1);
+		OnResChanged(2);
 	}
 
 	public void OnVideoModeChanged(int mode)

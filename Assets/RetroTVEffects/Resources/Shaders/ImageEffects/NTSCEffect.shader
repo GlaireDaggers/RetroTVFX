@@ -13,33 +13,21 @@
 		// No culling or depth
 		Cull Off ZWrite Off ZTest Always
 
-		// PASS_COMPOSITE_ENCODEYIQ		= 0
-		Pass
-		{
-			CGPROGRAM
-			#pragma multi_compile __ USE_YIQ_MATRIX
-			#pragma multi_compile __ QUANTIZE_RGB
-			#include "RetroTV.cginc"
-
-			#pragma vertex vert_tv
-			#pragma fragment frag_composite_encodeyiq
-			ENDCG
-		}
-
-		// PASS_COMPOSITE_ENCODESIGNAL	= 1
+		// PASS_COMPOSITE_ENCODE		= 0
 		Pass
 		{
 			CGPROGRAM
 			#pragma multi_compile __ RF_SIGNAL
 			#pragma multi_compile __ USE_YIQ_MATRIX
+			#pragma multi_compile __ QUANTIZE_RGB
 			#include "RetroTV.cginc"
 
 			#pragma vertex vert_tv
-			#pragma fragment frag_composite_encodesignal
+			#pragma fragment frag_composite_encode
 			ENDCG
 		}
 
-		// PASS_COMPOSITE_DECODE		= 2
+		// PASS_COMPOSITE_DECODE		= 1
 		Pass
 		{
 			CGPROGRAM
@@ -56,7 +44,7 @@
 			ENDCG
 		}
 
-		// PASS_TV_OVERLAY				= 3
+		// PASS_TV_OVERLAY				= 2
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -71,7 +59,7 @@
 			ENDCG
 		}
 
-		// PASS_VGA						= 4
+		// PASS_VGA						= 3
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -89,7 +77,7 @@
 			ENDCG
 		}
 
-		// PASS_COMPONENT				= 5
+		// PASS_COMPONENT				= 4
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -108,22 +96,7 @@
 			ENDCG
 		}
 
-		// PASS_SVIDEO_ENCODEYIQ		= 6
-		Pass
-		{
-			ZTest Always Cull Off ZWrite Off
-
-			CGPROGRAM
-			#pragma multi_compile __ USE_YIQ_MATRIX
-			#pragma multi_compile __ QUANTIZE_RGB
-			#include "RetroTV.cginc"
-
-			#pragma vertex vert_tv
-			#pragma fragment frag_composite_encodeyiq
-			ENDCG
-		}
-
-		// PASS_SVIDEO_ENCODESIGNAL		= 7
+		// PASS_SVIDEO_ENCODE			= 5
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -133,11 +106,11 @@
 			#include "RetroTV.cginc"
 
 			#pragma vertex vert_tv
-			#pragma fragment frag_svideo_encodesignal
+			#pragma fragment frag_svideo_encode
 			ENDCG
 		}
 
-		// PASS_SVIDEO_DECODE			= 8
+		// PASS_SVIDEO_DECODE			= 6
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
