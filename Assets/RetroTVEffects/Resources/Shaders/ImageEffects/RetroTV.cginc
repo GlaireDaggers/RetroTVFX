@@ -4,8 +4,8 @@
 // ====================
 
 #define PI 3.14159265
-#define CHROMA_MOD_FREQ (0.4 * PI)
-#define CHROMA_AMP 1.0
+#define CHROMA_MOD_FREQ (0.3334 * PI)
+#define CHROMA_AMP 1.6667
 #define ENCODE_GAMMA (1.0 / 2.2)
 
 #define SATURATION 1.0
@@ -24,7 +24,7 @@
 #if defined(RF_SIGNAL)
 #define COMPOSITE_LOWPASS 1.25
 #else
-#define COMPOSITE_LOWPASS 0.8
+#define COMPOSITE_LOWPASS 1.0
 #endif
 
 #define SVIDEO_LOWPASS 1.0
@@ -87,7 +87,8 @@ v2f vert_tv(appdata v)
 	o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 	o.uv = v.uv;
 
-	o.pix_no = o.uv * _ScreenSize.xy;
+	float2 invUV = float2(o.uv.x, 1 - o.uv.y);
+	o.pix_no = invUV * _ScreenSize.xy;
 	o.mask_uv = o.uv * _PixelMaskScale.xy;
 
 	return o;
@@ -168,7 +169,7 @@ fixed4 frag_composite_encodeyiq (v2f i) : SV_Target
 	frag_quantize(rgb);
 	float3 yiq = rgb2yiq(rgb);
 
-	float chroma_phase = PI * 0.6667 * (fmod(i.pix_no.y, 3.0) + _Framecount);
+	float chroma_phase = PI * 0.66667 * (i.pix_no.y + _Framecount);
 	float mod_phase = chroma_phase + i.pix_no.x * CHROMA_MOD_FREQ;
 
 	float i_mod = CHROMA_AMP * cos(mod_phase);
@@ -184,7 +185,7 @@ fixed4 frag_composite_encodeyiq (v2f i) : SV_Target
 fixed4 frag_composite_encodesignal(v2f i) : SV_Target
 {
 	float one_x = _ScreenSize.z;
-	float chroma_phase = PI * 0.6667 * (fmod(i.pix_no.y, 3.0) + _Framecount);
+	float chroma_phase = PI * 0.66667 * (i.pix_no.y + _Framecount);
 	float mod_phase = chroma_phase + i.pix_no.x * CHROMA_MOD_FREQ;
 
 	float rmod = 1.0 - (sin(i.uv.x * 320) * 0.05);
@@ -212,6 +213,8 @@ fixed4 frag_composite_encodesignal(v2f i) : SV_Target
 #else
 	signal += (dot(cyiq, float3(1.0, 1.0, 1.0)) ) * _SignalFilter[8];
 #endif
+
+	//return float4(signal, signal, signal, 1.0);
 
 	float i_mod = chroma_mod * cos(mod_phase);
 	float q_mod = chroma_mod * sin(mod_phase);

@@ -279,7 +279,10 @@
             
 
             RenderTexture pass1 = RenderTexture.GetTemporary(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
-            RenderTexture pass2 = RenderTexture.GetTemporary(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
+			//pass1.filterMode = FilterMode.Point;
+			RenderTexture pass2 = RenderTexture.GetTemporary(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
+			//pass2.filterMode = FilterMode.Point;
+
             RenderTexture lastComposite = RenderTexture.GetTemporary(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
 
             RenderTexture final = pass2;
@@ -296,7 +299,8 @@
                 Graphics.Blit(pass1, compositeTemp);
                 material.SetTexture("_LastCompositeTex", lastComposite);
 
-                Graphics.Blit(pass1, pass2, material, PASS_COMPOSITE_DECODE);
+				Graphics.Blit(pass1, pass2, material, PASS_COMPOSITE_DECODE);
+				//Graphics.Blit(pass1, pass2);
             }
             else if (this.VideoMode == VideoType.SVideo)
             {
