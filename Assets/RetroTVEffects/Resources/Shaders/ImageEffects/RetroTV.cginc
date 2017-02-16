@@ -57,12 +57,15 @@ float4 _FlickerOffs;
 
 float _SignalFilter[9];
 
-float _LumaFilter[LOWPASS_TAPS+1];
-float _ChromaFilter[LOWPASS_TAPS+1];
+float _LumaFilter[LOWPASS_TAPS + 1];
+float _ChromaFilter[LOWPASS_TAPS + 1];
 
 float4 _IQOffset;
 
 float _RFNoise;
+float _LumaSharpen;
+
+float _Realtime;
 
 float4 _ScreenSize;
 
@@ -104,7 +107,7 @@ v2f vert_tv(appdata v)
 // ====================
 inline float3 rgb2yiq(float3 col)
 {
-	return mul(_RGB2YIQ_MAT, float4(col, 0.0)).xyz * float3( 1.0, _IQOffset.xy ) + float3( 0.0, _IQOffset.zw );
+	return mul(_RGB2YIQ_MAT, float4(col, 0.0)).xyz * float3(1.0, _IQOffset.xy) + float3(0.0, _IQOffset.zw);
 }
 
 inline float3 fetch_yiq_offset(float2 uv, float offset, float one_x)
@@ -186,7 +189,7 @@ fixed4 frag_composite_encode(v2f i) : SV_Target
 	// encode as signal
 #if defined(RF_SIGNAL)
 	float rmod = 1.0 - (sin(i.uv.x * 320) * 0.05);
-	float noise = (rand(float3(i.uv, _Time.x)) * rmod * 2 - 1) * _RFNoise;
+	float noise = (rand(float3(i.uv, _Realtime)) * rmod * 2 - 1) * _RFNoise;
 
 	float signal = (dot(yiq, float3(1.0, 1.0, 1.0)) + noise);
 #else
@@ -214,10 +217,25 @@ fixed4 frag_composite_decode(v2f i) : SV_Target
 	}
 	signal += fetch_signal(i.uv) *
 		float3(_LumaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS]);
-	
+
 	signal += YIQOFFSET;
 
-	float3 rgb = yiq2rgb(signal);
+	return float4(signal, 1);
+}
+
+fixed4 frag_composite_final(v2f i) : SV_Target
+{
+	float one_y = _ScreenSize.w;
+	float3 yiq = tex2D(_MainTex, i.uv);
+
+	float3 yiq2 = tex2D(_MainTex, i.uv + float2(_ScreenSize.z * 2, 0.0));
+	float3 yiq3 = tex2D(_MainTex, i.uv - float2(_ScreenSize.z * 2, 0.0));
+	
+	// for realism this should be a scanline-based comb filter, but that doesn't seem to look quite right
+	// so for now it's a naive horizontal convolution instead
+	yiq.x += (yiq.x * _LumaSharpen * 2) + (yiq2.x * -1 * _LumaSharpen) + (yiq3.x * -1 * _LumaSharpen);
+
+	float3 rgb = yiq2rgb(yiq);
 
 	frag_rolling_flicker(i, rgb);
 
@@ -230,14 +248,14 @@ fixed4 frag_vga(v2f i) : SV_Target
 	frag_quantize(rgb);
 	frag_rolling_flicker(i, rgb);
 
-	return float4( rgb.x, rgb.y, rgb.z, 1.0 ) * RGB_SCALE + RGB_SHIFT;
+	return float4(rgb.x, rgb.y, rgb.z, 1.0) * RGB_SCALE + RGB_SHIFT;
 }
 
 fixed4 frag_component(v2f i) : SV_Target
 {
 	float3 col = tex2D(_MainTex, i.uv).rgb;
 	frag_quantize(col);
-	float3 yiq = rgb2yiq( col );
+	float3 yiq = rgb2yiq(col);
 	float3 rgb = yiq2rgb(yiq + YIQOFFSET);
 
 	frag_rolling_flicker(i, rgb);
@@ -262,13 +280,13 @@ fixed4 frag_tv_overlay(v2f i) : SV_Target
 	half3 color = tex2D(_MainTex, uv).rgb
 		* tex2D(_OverlayImg, uv).rgb;
 
-	frag_pixel_mask( uv * _PixelMaskScale.xy, color);
+	frag_pixel_mask(uv * _PixelMaskScale.xy, color);
 
-	return float4( color, 1.0 );
+	return float4(color, 1.0);
 #else
 	half3 color = tex2D(_MainTex, i.uv).rgb * tex2D(_OverlayImg, i.uv).rgb;
 	frag_pixel_mask(i.mask_uv, color);
-	return float4( color, 1.0 );
+	return float4(color, 1.0);
 #endif
 }
 
@@ -314,7 +332,7 @@ fixed4 frag_svideo_decode(v2f i) : SV_Target
 	}
 	signal += fetch_signal(i.uv) *
 		float3(1.0, _ChromaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS]);
-	
+
 	signal += YIQOFFSET;
 
 	float3 rgb = yiq2rgb(signal);

@@ -50,14 +50,15 @@ namespace JetFistGames.RetroTVFX
     {
         private const int PASS_COMPOSITE_ENCODE = 0;
         private const int PASS_COMPOSITE_DECODE = 1;
+		private const int PASS_COMPOSITE_FINAL = 2;
 
-        private const int PASS_VGA = 3;
-        private const int PASS_COMPONENT = 4;
+		private const int PASS_VGA = 4;
+        private const int PASS_COMPONENT = 5;
 
-        private const int PASS_SVIDEO_ENCODE = 5;
-        private const int PASS_SVIDEO_DECODE = 6;
+        private const int PASS_SVIDEO_ENCODE = 6;
+        private const int PASS_SVIDEO_DECODE = 7;
 
-        private const int PASS_TV_OVERLAY = 2;
+        private const int PASS_TV_OVERLAY = 3;
 
         [Header("Shader Properties")]
 
@@ -96,6 +97,9 @@ namespace JetFistGames.RetroTVFX
 
         [Range(0f, 2f)]
         public float RFNoise = 0.25f;
+
+		[Range(0f, 4f)]
+		public float LumaSharpen = 0f;
 
         public bool QuantizeRGB = false;
 
@@ -315,11 +319,14 @@ namespace JetFistGames.RetroTVFX
                 material.SetVector("_OneOverQuantizeRGB", oneOverQuantize);
             }
 
+			material.SetFloat("_Realtime", Time.realtimeSinceStartup);
+
             material.SetVector("_IQOffset", new Vector4(IQScale.x, IQScale.y, IQOffset.x, IQOffset.y));
             material.SetMatrix("_RGB2YIQ_MAT", this.rgb2yiq_mat);
             material.SetMatrix("_YIQ2RGB_MAT", this.yiq2rgb_mat);
 
             material.SetFloat("_RFNoise", this.RFNoise);
+			material.SetFloat("_LumaSharpen", this.LumaSharpen);
 
             material.SetInt("_Framecount", -this.frameCount);
             material.SetVector("_ScreenSize", new Vector4(DisplaySizeX, DisplaySizeY, 1f / DisplaySizeX, 1f / DisplaySizeY));
@@ -355,7 +362,10 @@ namespace JetFistGames.RetroTVFX
 				material.SetTexture("_LastCompositeTex", lastComposite);
 				
 				Graphics.Blit(pass2, pass1, material, PASS_COMPOSITE_DECODE);
-            }
+				Graphics.Blit(pass1, pass2, material, PASS_COMPOSITE_FINAL);
+
+				final = pass2;
+			}
             else if (this.VideoMode == VideoType.SVideo)
             {
                 Graphics.Blit(src, pass1);

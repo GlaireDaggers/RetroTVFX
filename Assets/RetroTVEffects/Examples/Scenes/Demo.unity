@@ -3083,9 +3083,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 739c6569a1eb0c448804a9e0e49f34b1, type: 3}
-  VideoMode: 2
+  VideoMode: 1
   DisplaySizeX: 1280
-  DisplaySizeY: 240
+  DisplaySizeY: 480
   StretchToDisplay: 0
   AspectRatio: 1.33
   EnableTVCurvature: 1
@@ -3099,6 +3099,7 @@ MonoBehaviour:
   IQOffset: {x: 0, y: 0}
   IQScale: {x: 1, y: 1}
   RFNoise: 0.02
+  LumaSharpen: 1
   QuantizeRGB: 1
   RBits: 3
   GBits: 3

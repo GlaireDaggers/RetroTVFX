@@ -44,7 +44,24 @@
 			ENDCG
 		}
 
-		// PASS_TV_OVERLAY				= 2
+		// PASS_COMPOSITE_FINAL			= 2
+		Pass
+		{
+			CGPROGRAM
+			#pragma multi_compile __ RF_SIGNAL
+			#pragma multi_compile __ USE_YIQ_MATRIX
+			#pragma multi_compile __ ANTI_FLICKER
+			#pragma multi_compile __ ROLLING_FLICKER
+			#pragma multi_compile __ PIXEL_MASK
+
+			#include "RetroTV.cginc"
+
+			#pragma vertex vert_tv
+			#pragma fragment frag_composite_final
+			ENDCG
+		}
+
+		// PASS_TV_OVERLAY				= 3
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -59,7 +76,7 @@
 			ENDCG
 		}
 
-		// PASS_VGA						= 3
+		// PASS_VGA						= 4
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -77,7 +94,7 @@
 			ENDCG
 		}
 
-		// PASS_COMPONENT				= 4
+		// PASS_COMPONENT				= 5
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
@@ -96,13 +113,14 @@
 			ENDCG
 		}
 
-		// PASS_SVIDEO_ENCODE			= 5
+		// PASS_SVIDEO_ENCODE			= 6
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
 
 			CGPROGRAM
 			#pragma multi_compile __ USE_YIQ_MATRIX
+			#pragma multi_compile __ QUANTIZE_RGB
 			#include "RetroTV.cginc"
 
 			#pragma vertex vert_tv
@@ -110,7 +128,7 @@
 			ENDCG
 		}
 
-		// PASS_SVIDEO_DECODE			= 6
+		// PASS_SVIDEO_DECODE			= 7
 		Pass
 		{
 			ZTest Always Cull Off ZWrite Off
