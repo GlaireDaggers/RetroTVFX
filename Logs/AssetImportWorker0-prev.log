@@ -1,0 +1,209 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.33f1 (915a7af8b0d5) revision 9525882'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'en' Physical Memory: 16283 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+D:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/archive/github/RetroTVFX
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50664
+Successfully changed project path to: E:/archive/github/RetroTVFX
+E:/archive/github/RetroTVFX
+Using Asset Import Pipeline V2.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Refreshing native plugins compatible for Editor in 54.39 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.33f1 (915a7af8b0d5)
+[Subsystems] Discovering subsystems at path D:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/archive/github/RetroTVFX/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 (ID=0x2184)
+    Vendor:   
+    VRAM:     5991 MB
+    Driver:   30.0.14.9676
+Initialize mono
+Mono path[0] = 'D:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56156
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002179 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 52.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.004 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1004ms)
+		BeginReloadAssembly (98ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (783ms)
+			LoadAssemblies (96ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (297ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (271ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (53ms)
+				BeforeProcessingInitializeOnLoad (27ms)
+				ProcessInitializeOnLoadAttributes (142ms)
+				ProcessInitializeOnLoadMethodAttributes (43ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003410 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.747 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1748ms)
+		BeginReloadAssembly (247ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (1408ms)
+			LoadAssemblies (154ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (462ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (93ms)
+			SetupLoadedEditorAssemblies (572ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (132ms)
+				ProcessInitializeOnLoadAttributes (413ms)
+				ProcessInitializeOnLoadMethodAttributes (14ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Cannot set VR devices because the platform passed isn't supported by Unity.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1653 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 91.4 MB.
+System memory in use after: 91.1 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2090.
+Total: 5.484500 ms (FindLiveObjects: 0.370600 ms CreateObjectMapping: 0.097600 ms MarkObjects: 4.406000 ms  DeleteObjects: 0.607300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/RetroTVEffects/Resources/Shaders
+  artifactKey: Guid(850d528cdafc234439debe7e5a4fe60c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Shaders using Guid(850d528cdafc234439debe7e5a4fe60c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0dfec27e909f42a538ffe9fe4e2700c') in 0.006371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Assets/RetroTVEffects/Resources/Canvas_256x240.renderTexture
+  artifactKey: Guid(92b0251d7d37c5a408ad43728fd4750f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Canvas_256x240.renderTexture using Guid(92b0251d7d37c5a408ad43728fd4750f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05cd2f5c9a0f19c1be28ee145a9110d9') in 0.298368 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000597 seconds.
+  path: Assets/RetroTVEffects/Resources/Shaders/ObjectShaders
+  artifactKey: Guid(6df339133ac85d14eb5a4dd5a893e6ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Shaders/ObjectShaders using Guid(6df339133ac85d14eb5a4dd5a893e6ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0151914e3f99642b1338c9c61dfd7b51') in 0.001941 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/RetroTVEffects/Resources/Canvas_256x224.renderTexture
+  artifactKey: Guid(aeb7f910b68f91f479b37ed94fa6737f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Canvas_256x224.renderTexture using Guid(aeb7f910b68f91f479b37ed94fa6737f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f2ed1b2993dc755635d3193b08dc254') in 0.023805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/RetroTVEffects/Resources
+  artifactKey: Guid(40aea65028b3b6d4bad632a5d2f9e9a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources using Guid(40aea65028b3b6d4bad632a5d2f9e9a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '314baf9acdaf4c99c9886407f231cd85') in 0.002289 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/RetroTVEffects/Resources/Shaders/ImageEffects
+  artifactKey: Guid(466adb63c61171a40b71420846de89a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Shaders/ImageEffects using Guid(466adb63c61171a40b71420846de89a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2d72e13133511ba3ab66956bd46f588') in 0.001910 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/RetroTVEffects/Resources/Canvas_320x240.renderTexture
+  artifactKey: Guid(428ec4810eb1a484eba17f71a0ffccb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Canvas_320x240.renderTexture using Guid(428ec4810eb1a484eba17f71a0ffccb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7520f9875c6a7f6ab38b95a052ea02f2') in 0.015890 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.536957 seconds.
+  path: Assets/RetroTVEffects/Resources/Shaders/ImageEffects/RetroTV.cginc
+  artifactKey: Guid(003a8a89eea58f945a0e263f916a611a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Shaders/ImageEffects/RetroTV.cginc using Guid(003a8a89eea58f945a0e263f916a611a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9be955a4da02ba59b12c4e6761a65c31') in 0.005832 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 78.230889 seconds.
+  path: Assets/RetroTVEffects/Resources/Shaders/ImageEffects/RetroTV.cginc
+  artifactKey: Guid(003a8a89eea58f945a0e263f916a611a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/RetroTVEffects/Resources/Shaders/ImageEffects/RetroTV.cginc using Guid(003a8a89eea58f945a0e263f916a611a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '725501a925ed59056029a13a1472fcd4') in 0.003447 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

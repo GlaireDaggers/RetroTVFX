@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using UnityStandardAssets.ImageEffects;
-
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 

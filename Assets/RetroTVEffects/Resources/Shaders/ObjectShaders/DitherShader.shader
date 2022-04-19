@@ -1,4 +1,6 @@
-﻿Shader "Unlit/DitherShader"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/DitherShader"
 {
 	Properties
 	{
@@ -46,7 +48,7 @@
 	{
 		v2f o;
 
-		outpos = mul(UNITY_MATRIX_MVP, v.vertex);
+		outpos = UnityObjectToClipPos(v.vertex);
 
 		float2 res = float2(_ResolutionX, _ResolutionY) * 0.5;
 		res /= outpos.w;
