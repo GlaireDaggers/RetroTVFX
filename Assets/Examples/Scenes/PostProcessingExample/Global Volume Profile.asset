@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Volume Profile
+  m_EditorClassIdentifier: 
+  components: []
+--- !u!114 &5232671978974376540
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e1781d27f1a744db2ac69104e99f85, type: 3}
+  m_Name: NTSC
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: 
+  m_AdvancedMode: 0
+  VideoMode:
+    m_OverrideState: 0
+    m_Value: 0
+  DisplaySizeX:
+    m_OverrideState: 0
+    m_Value: 960
+  DisplaySizeY:
+    m_OverrideState: 0
+    m_Value: 480
+  StretchToDisplay:
+    m_OverrideState: 0
+    m_Value: 1
+  AspectRatio:
+    m_OverrideState: 0
+    m_Value: 1.33
+  EnableTVCurvature:
+    m_OverrideState: 0
+    m_Value: 0
+  Curvature:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  TVOverlay:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: ed6c0fda5a584bd4dbc7fcc2453283e3, type: 3}
+  EnablePixelMask:
+    m_OverrideState: 0
+    m_Value: 1
+  PixelMaskTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 17da6d53ec93a0444bd0f751b1d02477, type: 3}
+  MaskRepeatX:
+    m_OverrideState: 0
+    m_Value: 160
+  MaskRepeatY:
+    m_OverrideState: 0
+    m_Value: 90
+  PixelMaskBrightness:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 1
+    max: 2
+  IQOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+  IQScale:
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1}
+  RFNoise:
+    m_OverrideState: 0
+    m_Value: 0.25
+    min: 0
+    max: 2
+  LumaSharpen:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 4
+  QuantizeRGB:
+    m_OverrideState: 0
+    m_Value: 0
+  RBits:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 2
+    max: 8
+  GBits:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 2
+    max: 8
+  BBits:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 2
+    max: 8
+  EnableBurstCountAnimation:
+    m_OverrideState: 0
+    m_Value: 1
+  AntiFlicker:
+    m_OverrideState: 0
+    m_Value: 0
+  EnableRollingFlicker:
+    m_OverrideState: 0
+    m_Value: 0
+  RollingFlickerFactor:
+    m_OverrideState: 0
+    m_Value: 0.25
+    min: 0
+    max: 1
+  RollingVSyncTime:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 2
