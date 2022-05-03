@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b202202d6a4bd9a4eaf57f9afc22833e, type: 3}
-  m_Name: RetroTVEffectsPresset
+  m_Name: Rf960
   m_EditorClassIdentifier: 
-  _videoMode: 1
-  _displayWidth: 2048
-  _displayHeight: 2048
+  _videoMode: 0
+  _displayWidth: 1280
+  _displayHeight: 960
   _stretchToDisplay: 1
-  _aspectRatio: 1.14
+  _aspectRatio: 1.33
   _enableTvCurvature: 1
-  _curvature: 0.176
+  _curvature: 0.217
   _tvOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
   _enablePixelMask: 1
-  _pixelMaskTexture: {fileID: 2800000, guid: 71aeaac4c4088784a91d6a818455e895, type: 3}
-  _maskRepeat: {x: 1, y: 1}
-  _pixelMaskBrightness: 1.25
+  _pixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}
+  _maskRepeat: {x: 213.333, y: 120}
+  _pixelMaskBrightness: 2
   _iqOffset: {x: 0, y: 0}
   _iqScale: {x: 1, y: 1}
-  _rfNoise: 0.25
-  _lumaSharpen: 0
-  _quantizeRGB: 1
+  _rfNoise: 0.02
+  _lumaSharpen: 1
+  _quantizeRGB: 0
   _rBits: 8
   _gBits: 8
   _bBits: 8
   _enableBurstCountAnimation: 1
-  _antiFlicker: 1
+  _antiFlicker: 0
   _enableRollingFlicker: 1
-  _rollingFlickerFactor: 0.289
-  _rollingVSyncTime: 1.047
+  _rollingFlickerFactor: 0.158
+  _rollingVSyncTime: 1.1

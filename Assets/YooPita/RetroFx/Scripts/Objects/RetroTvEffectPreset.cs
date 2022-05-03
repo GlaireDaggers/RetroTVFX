@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace YooPita.RetroTvFx
 {
-    [CreateAssetMenu(fileName = "RetroTvEffectPresset", menuName = "ScriptableObjects/RetroTvEffectPresset")]
-    public class RetroTvEffectPresset : ScriptableObject
+    [CreateAssetMenu(fileName = "TvFxPreset", menuName = "ScriptableObjects/TvFxPreset")]
+    public class RetroTvEffectPreset : ScriptableObject
     {
         public RetroTvEffect.VideoMode VideoMode => _videoMode;
         public int DisplayWidth => _displayWidth;

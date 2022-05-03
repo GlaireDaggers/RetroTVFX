@@ -10,14 +10,14 @@ namespace YooPita.RetroTvFx
         [SerializeField] private int _screenWidth = 1280;
         [SerializeField] private int _screenHeight = 800;
         [SerializeField] private TvVideoPlayer _videoPlayer;
-        [SerializeField] private RetroTvEffectPresset _presset;
+        [SerializeField] private RetroTvEffectPreset _preset;
 
         private VirtualRenderTexture _outputTexture;
         private RetroTvEffect _effect;
 
         private void Awake()
         {
-            _effect = new RetroTvEffect(_presset);
+            _effect = new RetroTvEffect(_preset);
             AllocateOutputTexture();
         }
 
@@ -38,12 +38,12 @@ namespace YooPita.RetroTvFx
             }
         }
 
-        public void ChangePresset(RetroTvEffectPresset presset)
+        public void ChangePreset(RetroTvEffectPreset preset)
         {
-            if (presset != _presset)
+            if (preset != _preset)
             {
-                _presset = presset;
-                _effect = new RetroTvEffect(_presset);
+                _preset = preset;
+                _effect = new RetroTvEffect(_preset);
             }
         }
     }
