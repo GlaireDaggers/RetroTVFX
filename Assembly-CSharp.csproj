@@ -63,26 +63,26 @@
     <Compile Include="Assets\RetroTVEffects\Scripts\FadeEffect.cs" />
     <Compile Include="Assets\RetroTVEffects\Scripts\Utils\GraphicsUtils.cs" />
     <Compile Include="Assets\RetroTVEffects\Scripts\CRTEffect.cs" />
-    <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\CameraRetroTvEffect.cs" />
+    <Compile Include="Assets\YooPita\Examples\CameraFx\CameraRetroTvEffect.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Contracts\IVirtualRenderTexture.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Contracts\IFilterKernelTaps.cs" />
+    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\TvVideoPlayer.cs" />
     <Compile Include="Assets\RetroTVEffects\Examples\Scripts\UIOptionSelector.cs" />
-    <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\RetroTvEffectPreset.cs" />
+    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\RetroTvEffectPreset.cs" />
     <Compile Include="Assets\RetroTVEffects\Scripts\BlitRenderTexture.cs" />
     <Compile Include="Assets\RetroTVEffects\Examples\Scripts\CRTEffectController.cs" />
+    <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\VirtualRenderTexture.cs" />
     <Compile Include="Assets\RetroTVEffects\Scripts\LoResEffect.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\FilterKernelTaps24.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Contracts\ITvMatrices.cs" />
     <Compile Include="Assets\RetroTVEffects\Scripts\Audio\AudioHumEffect.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\VirtualTemporaryRenderTexture.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\TvMatrices.cs" />
+    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\ChangeTvPreset.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\RetroTvEffect.cs" />
+    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Contracts\IInputSignal.cs" />
     <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\Tv.cs" />
     <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\VirtualRenderTextureBase.cs" />
-    <Compile Include="Assets\YooPita\RetroFx\Scripts\Objects\VirtualRenderTexture.cs" />
-    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\TvVideoPlayer.cs" />
-    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Contracts\IInputSignal.cs" />
-    <Compile Include="Assets\YooPita\Examples\MiniTv\Scripts\Objects\ChangeTvPreset.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RetroTVEffects\Resources\Shaders\ImageEffects\RetroTV.cginc" />

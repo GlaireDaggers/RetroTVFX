@@ -17,7 +17,7 @@ namespace YooPita.RetroTvFx
 
         private void Awake()
         {
-            _effect = new RetroTvEffect(_preset);
+            CreateRetroTvEffectFromPreset();
             AllocateOutputTexture();
         }
 
@@ -25,6 +25,8 @@ namespace YooPita.RetroTvFx
         {
             AllocateOutputTexture();
             _effect.Blit(_videoPlayer.Texture, _outputTexture);
+            if (_preset.CheckWasUpdated())
+                UpdateEffectValuesByPresset();
         }
 
         private void AllocateOutputTexture()
@@ -35,6 +37,7 @@ namespace YooPita.RetroTvFx
                 _outputTexture = new VirtualRenderTexture(_screenWidth, _screenHeight, 24, RenderTextureFormat.ARGBHalf);
                 _outputTexture.SetFilterMode(FilterMode.Point);
                 _targerMaterial.mainTexture = _outputTexture.Texture;
+                _targerMaterial.SetTexture("_EmissionMap", _outputTexture.Texture);
             }
         }
 
@@ -43,8 +46,45 @@ namespace YooPita.RetroTvFx
             if (preset != _preset)
             {
                 _preset = preset;
-                _effect = new RetroTvEffect(_preset);
+                CreateRetroTvEffectFromPreset();
             }
+        }
+
+        private void CreateRetroTvEffectFromPreset()
+        {
+            _effect = new RetroTvEffect();
+            UpdateEffectValuesByPresset();
+        }
+
+        private void UpdateEffectValuesByPresset()
+        {
+            _effect.Mode = _preset.VideoMode;
+            _effect.Width = _preset.DisplayWidth;
+            _effect.Height = _preset.DisplayHeight;
+            _effect.StretchToDisplay = _preset.StretchToDisplay;
+            _effect.AspectRatio = _preset.AspectRatio;
+            _effect.EnableTvCurvature = _preset.EnableTvCurvature;
+            _effect.Curvature = _preset.Curvature;
+            _effect.TvOverlay = _preset.TvOverlay;
+            _effect.EnablePixelMask = _preset.EnablePixelMask;
+            _effect.PixelMaskTexture = _preset.PixelMaskTexture;
+            _effect.MaskRepeat = _preset.MaskRepeat;
+            _effect.PixelMaskBrightness = _preset.PixelMaskBrightness;
+            _effect.IqOffset = _preset.IqOffset;
+            _effect.IqScale = _preset.IqScale;
+            _effect.RfNoise = _preset.RfNoise;
+            _effect.LumaSharpen = _preset.LumaSharpen;
+            _effect.QuantizeRGB = _preset.QuantizeRGB;
+            _effect.RBits = _preset.RBits;
+            _effect.GBits = _preset.GBits;
+            _effect.BBits = _preset.BBits;
+            _effect.EnableBurstCountAnimation = _preset.EnableBurstCountAnimation;
+            _effect.AntiFlicker = _preset.AntiFlicker;
+            _effect.EnableRollingFlicker = _preset.EnableRollingFlicker;
+            _effect.RollingFlickerFactor = _preset.RollingFlickerFactor;
+            _effect.RollingVSyncTime = _preset.RollingVSyncTime;
+
+            _effect.UpdateValues();
         }
     }
 }

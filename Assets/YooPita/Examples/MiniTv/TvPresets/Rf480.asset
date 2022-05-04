@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b202202d6a4bd9a4eaf57f9afc22833e, type: 3}
+  m_Name: Rf480
+  m_EditorClassIdentifier: 
+  _videoMode: 0
+  _displayWidth: 640
+  _displayHeight: 480
+  _stretchToDisplay: 1
+  _aspectRatio: 1.33
+  _enableTvCurvature: 1
+  _curvature: 0.175
+  _tvOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
+  _enablePixelMask: 1
+  _pixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}
+  _maskRepeat: {x: 106.666, y: 60}
+  _pixelMaskBrightness: 2
+  _iqOffset: {x: 0, y: 0}
+  _iqScale: {x: 1, y: 1}
+  _rfNoise: 0.206
+  _lumaSharpen: 2
+  _quantizeRGB: 0
+  _rBits: 8
+  _gBits: 8
+  _bBits: 8
+  _enableBurstCountAnimation: 1
+  _antiFlicker: 0
+  _enableRollingFlicker: 1
+  _rollingFlickerFactor: 0.055
+  _rollingVSyncTime: 0.981

@@ -4,15 +4,43 @@ namespace YooPita.RetroTvFx
 {
     public class RetroTvEffect
     {
-        public RetroTvEffect(RetroTvEffectPreset retroTvEffectPreset)
+        public RetroTvEffect()
         {
             var shader = Shader.Find("Hidden/NTSCEffect");
             _material = new Material(shader);
-            _retroTvEffectPreset = retroTvEffectPreset;
-            UpdateValues();
         }
 
-        private RetroTvEffectPreset _retroTvEffectPreset;
+        public VideoMode Mode = VideoMode.Composite;
+        public int Width = 320;
+        public int Height = 240;
+        public bool StretchToDisplay = true;
+        public float AspectRatio = 1.33f;
+
+        [Tooltip("Apply curvature to display")]
+        public bool EnableTvCurvature = false;
+        [Range(0f, 1f)] public float Curvature = 0f;
+
+        [Tooltip("Overlay image applied (before curvature)")]
+        public Texture2D TvOverlay;
+        public bool EnablePixelMask = true;
+        public Texture2D PixelMaskTexture;
+        public Vector2 MaskRepeat = new Vector2(160, 90);
+        [Range(1f, 2f)] public float PixelMaskBrightness = 1f;
+        public Vector2 IqOffset = Vector2.zero;
+        public Vector2 IqScale = Vector2.one;
+        [Range(0f, 2f)] public float RfNoise = 0.25f;
+        [Range(0f, 4f)] public float LumaSharpen = 0f;
+        public bool QuantizeRGB = false;
+        [Range(2, 8)] public int RBits = 8;
+        [Range(2, 8)] public int GBits = 8;
+        [Range(2, 8)] public int BBits = 8;
+        public bool EnableBurstCountAnimation = true;
+        public bool AntiFlicker = false;
+        public bool EnableRollingFlicker = false;
+        [Range(0f, 1f)] public float RollingFlickerFactor = 0.25f;
+        [Range(0f, 2f)] public float RollingVSyncTime = 1f;
+        public FilterKernelTaps FilterKernel = FilterKernelTaps.FilterKernelTaps8;
+
         private const int _passCompositeEncode = 0;
         private const int _passCompositeDecode = 1;
         private const int _passCompositeFinal = 2;
@@ -48,80 +76,66 @@ namespace YooPita.RetroTvFx
         {
             AllocateTemporaryTextureByPreset(ref _compositeTemp);
             BlitByCurrentMode(input, output);
-            StretchToDisplay(output);
+            DoStretchToDisplay(output);
             LastUpdate();
-            if (_retroTvEffectPreset.CheckWasUpdated())
-                UpdateValues();
         }
 
         public void UpdateValues()
         {
-            QuantizeRGB();
+            DoQuantizeRGB();
 
-            SetBoolKeyword("ANTI_FLICKER", _retroTvEffectPreset.AntiFlicker, _antiFlickerEnabled);
-            SetBoolKeyword("ROLLING_FLICKER", _retroTvEffectPreset.EnableRollingFlicker, _rollingFlickerEnabled);
-            SetBoolKeyword("PIXEL_MASK", _retroTvEffectPreset.EnablePixelMask, _pixelMaskEnabled);
-            SetBoolKeyword("USE_TV_CURVATURE", _retroTvEffectPreset.EnableTvCurvature, _tvCurvatureEnabled);
-            SetBoolKeyword("QUANTIZE_RGB", _retroTvEffectPreset.QuantizeRGB, _quantizeRGBEnabled);
-            SetBoolKeyword("RF_SIGNAL", _retroTvEffectPreset.VideoMode == VideoMode.RF, _rfEnabled);
+            UpdateFilterKernelTaps();
+
+            SetBoolKeyword("ANTI_FLICKER", AntiFlicker, ref _antiFlickerEnabled);
+            SetBoolKeyword("ROLLING_FLICKER", EnableRollingFlicker, ref _rollingFlickerEnabled);
+            SetBoolKeyword("PIXEL_MASK", EnablePixelMask, ref _pixelMaskEnabled);
+            SetBoolKeyword("USE_TV_CURVATURE", EnableTvCurvature, ref _tvCurvatureEnabled);
+            SetBoolKeyword("QUANTIZE_RGB", QuantizeRGB, ref _quantizeRGBEnabled);
+            SetBoolKeyword("RF_SIGNAL", Mode == VideoMode.RF, ref _rfEnabled);
 
             _material.SetMatrix("_RGB2YIQ_MAT", _tvMatrices.Rgb2yiqMatrix);
             _material.SetMatrix("_YIQ2RGB_MAT", _tvMatrices.Yiq2rgbMatrix);
 
-            _material.SetTexture("_OverlayImg", _retroTvEffectPreset.TvOverlay);
+            _material.SetTexture("_OverlayImg", TvOverlay);
 
             _material.SetFloatArray("_LumaFilter", _filterKernelTaps.LumaFilter);
             _material.SetFloatArray("_ChromaFilter", _filterKernelTaps.ChromaFilter);
             _material.SetFloat("_Realtime", Time.realtimeSinceStartup);
 
-            _material.SetVector("_IQOffset", new Vector4(
-                _retroTvEffectPreset.IqScale.x,
-                _retroTvEffectPreset.IqScale.y,
-                _retroTvEffectPreset.IqOffset.x,
-                _retroTvEffectPreset.IqOffset.y));
+            _material.SetVector("_IQOffset", new Vector4(IqScale.x, IqScale.y, IqOffset.x, IqOffset.y));
 
-            _material.SetFloat("_RFNoise", _retroTvEffectPreset.RfNoise);
-            _material.SetFloat("_LumaSharpen", _retroTvEffectPreset.LumaSharpen);
+            _material.SetFloat("_RFNoise", RfNoise);
+            _material.SetFloat("_LumaSharpen", LumaSharpen);
 
             _material.SetInt("_Framecount", -_frameCount);
-            _material.SetVector("_ScreenSize", new Vector4(
-                _retroTvEffectPreset.DisplayWidth,
-                _retroTvEffectPreset.DisplayHeight,
-                1f / _retroTvEffectPreset.DisplayWidth,
-                1f / _retroTvEffectPreset.DisplayHeight));
+            _material.SetVector("_ScreenSize", new Vector4(Width, Height, 1f / Width, 1f / Height));
 
-            _material.SetFloat("_RollingFlickerAmount", _retroTvEffectPreset.RollingFlickerFactor);
-            _material.SetVector("_FlickerOffs", new Vector4(
-                _flickerOffset,
-                _flickerOffset + _retroTvEffectPreset.RollingVSyncTime,
-                0f,
-                0f));
+            _material.SetFloat("_RollingFlickerAmount", RollingFlickerFactor);
+            _material.SetVector("_FlickerOffs", new Vector4(_flickerOffset, _flickerOffset + RollingVSyncTime, 0f, 0f));
 
-            _material.SetVector("_PixelMaskScale", new Vector4(
-                _retroTvEffectPreset.MaskRepeat.x,
-                _retroTvEffectPreset.MaskRepeat.y));
-            _material.SetTexture("_PixelMask", _retroTvEffectPreset.PixelMaskTexture);
-            _material.SetFloat("_Brightness", _retroTvEffectPreset.PixelMaskBrightness);
+            _material.SetVector("_PixelMaskScale", new Vector4(MaskRepeat.x, MaskRepeat.y));
+            _material.SetTexture("_PixelMask", PixelMaskTexture);
+            _material.SetFloat("_Brightness", PixelMaskBrightness);
 
-            _material.SetFloat("_TVCurvature", _retroTvEffectPreset.Curvature);
+            _material.SetFloat("_TVCurvature", Curvature);
         }
 
         private void LastUpdate()
         {
             _material.SetFloat("_Realtime", Time.realtimeSinceStartup);
 
-            if (_retroTvEffectPreset.EnableBurstCountAnimation)
+            if (EnableBurstCountAnimation)
             {
                 _frameCount = (_frameCount + 1) % 3;
                 _material.SetInt("_Framecount", -_frameCount);
             }
 
-            if (_retroTvEffectPreset.EnableRollingFlicker)
+            if (EnableRollingFlicker)
             {
-                _flickerOffset += _retroTvEffectPreset.RollingVSyncTime;
+                _flickerOffset += RollingVSyncTime;
                 _material.SetVector("_FlickerOffs", new Vector4(
                 _flickerOffset,
-                _flickerOffset + _retroTvEffectPreset.RollingVSyncTime,
+                _flickerOffset + RollingVSyncTime,
                 0f,
                 0f));
             }
@@ -129,29 +143,19 @@ namespace YooPita.RetroTvFx
 
         private void AllocateTemporaryTextureByPreset(ref IVirtualRenderTexture texture)
         {
-            if (texture == null ||
-                texture.Width != _retroTvEffectPreset.DisplayWidth ||
-                texture.Height != _retroTvEffectPreset.DisplayHeight)
+            if (texture == null || texture.Width != Width || texture.Height != Height)
             {
                 if (texture != null) texture.Release();
-                texture = new VirtualTemporaryRenderTexture(
-                    _retroTvEffectPreset.DisplayWidth,
-                    _retroTvEffectPreset.DisplayHeight,
-                    24,
-                    RenderTextureFormat.ARGBHalf);
+                texture = new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
             }
         }
 
         private VirtualTemporaryRenderTexture GetTemporaryTextureByPreset()
         {
-            return new VirtualTemporaryRenderTexture(
-                _retroTvEffectPreset.DisplayWidth,
-                _retroTvEffectPreset.DisplayHeight,
-                24,
-                RenderTextureFormat.ARGBHalf);
+            return new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
         }
 
-        private void SetBoolKeyword(string keyword, bool enabled, bool keywordEnabled)
+        private void SetBoolKeyword(string keyword, bool enabled, ref bool keywordEnabled)
         {
             if (enabled != keywordEnabled)
             {
@@ -164,21 +168,13 @@ namespace YooPita.RetroTvFx
             keywordEnabled = enabled;
         }
 
-        private void QuantizeRGB()
+        private void DoQuantizeRGB()
         {
-            if (_retroTvEffectPreset.QuantizeRGB)
+            if (QuantizeRGB)
             {
-                Vector4 quantize = new Vector4(
-                    Mathf.Pow(2f, _retroTvEffectPreset.RBits),
-                    Mathf.Pow(2f, _retroTvEffectPreset.GBits),
-                    Mathf.Pow(2f, _retroTvEffectPreset.BBits),
-                    1f);
+                Vector4 quantize = new Vector4(Mathf.Pow(2f, RBits), Mathf.Pow(2f, GBits), Mathf.Pow(2f, BBits), 1f);
 
-                Vector4 oneOverQuantize = new Vector4(
-                    1f / quantize.x,
-                    1f / quantize.y,
-                    1f / quantize.z,
-                    1f);
+                Vector4 oneOverQuantize = new Vector4(1f / quantize.x, 1f / quantize.y, 1f / quantize.z, 1f);
 
                 _material.SetVector("_QuantizeRGB", quantize);
                 _material.SetVector("_OneOverQuantizeRGB", oneOverQuantize);
@@ -187,15 +183,15 @@ namespace YooPita.RetroTvFx
 
         private void BlitByCurrentMode(IVirtualRenderTexture input, IVirtualRenderTexture output)
         {
-            if (_retroTvEffectPreset.VideoMode == VideoMode.Composite || _retroTvEffectPreset.VideoMode == VideoMode.RF)
+            if (Mode == VideoMode.Composite || Mode == VideoMode.RF)
                 BlitComposite(input, output);
-            else if (_retroTvEffectPreset.VideoMode == VideoMode.SVideo)
+            else if (Mode == VideoMode.SVideo)
                 BlitSVideo(input, output);
-            else if (_retroTvEffectPreset.VideoMode == VideoMode.VGA)
+            else if (Mode == VideoMode.VGA)
                 BlitVga(input, output);
-            else if (_retroTvEffectPreset.VideoMode == VideoMode.VGAFast)
+            else if (Mode == VideoMode.VGAFast)
                 BlitVgaFast(input, output);
-            else if (_retroTvEffectPreset.VideoMode == VideoMode.Component)
+            else if (Mode == VideoMode.Component)
                 BlitComponent(input, output);
         }
 
@@ -251,9 +247,9 @@ namespace YooPita.RetroTvFx
             _material.SetTexture("_LastCompositeTex", lastComposite.Texture);
         }
 
-        private void StretchToDisplay(IVirtualRenderTexture output)
+        private void DoStretchToDisplay(IVirtualRenderTexture output)
         {
-            if (_retroTvEffectPreset.StretchToDisplay)
+            if (StretchToDisplay)
             {
                 var temp = GetTemporaryTextureByPreset();
                 BlitQuad(output, temp);
@@ -264,7 +260,7 @@ namespace YooPita.RetroTvFx
             {
                 float screenAspectRatio = (float)Screen.width / Screen.height;
 
-                if (screenAspectRatio < _retroTvEffectPreset.AspectRatio)
+                if (screenAspectRatio < AspectRatio)
                     FitToScreenWidth(output, screenAspectRatio);
                 else
                     FitToScreenHeight(output, screenAspectRatio);
@@ -274,7 +270,7 @@ namespace YooPita.RetroTvFx
         private void FitToScreenWidth(IVirtualRenderTexture output, float screenAspectRatio)
         {
             float width = 1f;
-            float height = screenAspectRatio / _retroTvEffectPreset.AspectRatio;
+            float height = screenAspectRatio / AspectRatio;
             float heightDiff = 1f - height;
 
             var temp = GetTemporaryTextureByPreset();
@@ -289,13 +285,21 @@ namespace YooPita.RetroTvFx
         private void FitToScreenHeight(IVirtualRenderTexture output, float screenAspectRatio)
         {
             float height = 1f;
-            float width = (1f / screenAspectRatio) * _retroTvEffectPreset.AspectRatio;
+            float width = (1f / screenAspectRatio) * AspectRatio;
             float widthDiff = 1f - width;
 
             var temp = GetTemporaryTextureByPreset();
             BlitQuadByRectangle(new Rect(widthDiff * 0.5f, 0f, width, height), output, temp);
             temp.CopyTo(output);
             temp.Release();
+        }
+
+        private void UpdateFilterKernelTaps()
+        {
+            if (_filterKernelTaps is FilterKernelTaps8 && FilterKernel == FilterKernelTaps.FilterKernelTaps24)
+                _filterKernelTaps = new FilterKernelTaps24();
+            else if (_filterKernelTaps is FilterKernelTaps24 && FilterKernel == FilterKernelTaps.FilterKernelTaps8)
+                _filterKernelTaps = new FilterKernelTaps8();
         }
 
         private void BlitQuad(IVirtualRenderTexture sourceTexture, IVirtualRenderTexture destinationTexture)
@@ -367,6 +371,12 @@ namespace YooPita.RetroTvFx
             /// A more efficient version of VGA/SCART. Just blits directly to the screen.
             /// </summary>
             VGAFast,
+        }
+
+        public enum FilterKernelTaps
+        {
+            FilterKernelTaps8,
+            FilterKernelTaps24
         }
     }
 }
