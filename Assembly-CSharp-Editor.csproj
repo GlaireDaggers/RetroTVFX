@@ -66,10 +66,8 @@
     <Compile Include="Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
-    <Compile Include="Assets\RetroTVEffects\Editor\CRTEffectInspector.cs" />
     <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
-    <Compile Include="Assets\RetroTVEffects\Editor\SpritePalettizer.cs" />
     <Compile Include="Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
   </ItemGroup>

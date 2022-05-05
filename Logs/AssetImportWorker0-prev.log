@@ -1,0 +1,624 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.33f1 (915a7af8b0d5) revision 9525882'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'en' Physical Memory: 32627 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/archive/github/RetroTVFX
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61823
+Successfully changed project path to: E:/archive/github/RetroTVFX
+E:/archive/github/RetroTVFX
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 45.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.33f1 (915a7af8b0d5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/archive/github/RetroTVFX/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 (ID=0x2184)
+    Vendor:   
+    VRAM:     5992 MB
+    Driver:   30.0.15.1215
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56884
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000811 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 43.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.345 seconds
+Domain Reload Profiling:
+	ReloadAssembly (345ms)
+		BeginReloadAssembly (34ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (0ms)
+		EndReloadAssembly (272ms)
+			LoadAssemblies (33ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (80ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (15ms)
+			SetupLoadedEditorAssemblies (120ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (44ms)
+				BeforeProcessingInitializeOnLoad (9ms)
+				ProcessInitializeOnLoadAttributes (48ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001419 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 44.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.698 seconds
+Domain Reload Profiling:
+	ReloadAssembly (698ms)
+		BeginReloadAssembly (79ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (2ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (12ms)
+		EndReloadAssembly (587ms)
+			LoadAssemblies (55ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (175ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (267ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (44ms)
+				BeforeProcessingInitializeOnLoad (63ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (3ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3860 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 187.7 MB.
+System memory in use after: 188.0 MB.
+
+Unloading 55 unused Assets to reduce memory usage. Loaded Objects now: 4290.
+Total: 3.880100 ms (FindLiveObjects: 0.152300 ms CreateObjectMapping: 0.070600 ms MarkObjects: 3.630800 ms  DeleteObjects: 0.025800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/YooPita/Examples/MiniTv/Materials/Particle Dust.mat
+  artifactKey: Guid(e94d16a6c74cd5149a340fdbe887d0a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Materials/Particle Dust.mat using Guid(e94d16a6c74cd5149a340fdbe887d0a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f713173068c2539e3f82376c5d29d500') in 0.133990 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001474 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.615 seconds
+Domain Reload Profiling:
+	ReloadAssembly (616ms)
+		BeginReloadAssembly (76ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (507ms)
+			LoadAssemblies (53ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (164ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (195ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (106ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.5 MB.
+System memory in use after: 175.7 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4371.
+Total: 3.884000 ms (FindLiveObjects: 0.160300 ms CreateObjectMapping: 0.069000 ms MarkObjects: 3.631800 ms  DeleteObjects: 0.022300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 185.175504 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/PostProcessingExample.unity
+  artifactKey: Guid(9e02d56344f55174c894873f400c8c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/PostProcessingExample.unity using Guid(9e02d56344f55174c894873f400c8c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a7580f316e221da2939deab14a85f08') in 0.003592 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.287943 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv.unity
+  artifactKey: Guid(9e02d56344f55174c894873f400c8c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv.unity using Guid(9e02d56344f55174c894873f400c8c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f12cec54a3c1caa43418630a550ba3be') in 0.000782 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.511490 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv
+  artifactKey: Guid(d76262b238463a74b832749861174a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv using Guid(d76262b238463a74b832749861174a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63b7912914d1e7ef55fb583d53277958') in 0.000648 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.469472 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/LightingData.asset
+  artifactKey: Guid(5ab234d1264a559498930ffdeb59d78f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/LightingData.asset using Guid(5ab234d1264a559498930ffdeb59d78f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42f506af480762246cf1dfcd49099469') in 0.020481 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_light.exr
+  artifactKey: Guid(7bdb8a9f3799aaf4c8cc61007c6678c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_light.exr using Guid(7bdb8a9f3799aaf4c8cc61007c6678c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1254ea43681b90c4f35174a4ba5da8f0') in 0.019510 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_dir.png
+  artifactKey: Guid(02cba19e460177b4284ebf5f3fb0a3c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_dir.png using Guid(02cba19e460177b4284ebf5f3fb0a3c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0578cbf546a86ea87a2ccb31bb540ee6') in 0.006485 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000100 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_light.exr
+  artifactKey: Guid(feeaa0c7ce8b9e64cbe7875297e0cb31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_light.exr using Guid(feeaa0c7ce8b9e64cbe7875297e0cb31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a6c47b9c5cb2f2fbb6084a9455914bd') in 0.003778 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000103 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_light.exr
+  artifactKey: Guid(f8258b257a687ec40b0461644725f94a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_light.exr using Guid(f8258b257a687ec40b0461644725f94a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '541dc6b303e97db2049c69720ecf5892') in 0.003857 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000109 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/ReflectionProbe-1.exr
+  artifactKey: Guid(dac8bcd3b7e201041887cdeaf95e835f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/ReflectionProbe-1.exr using Guid(dac8bcd3b7e201041887cdeaf95e835f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe0c4c17569a11530a6af4d3fb9293c8') in 0.017187 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000105 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_light.exr
+  artifactKey: Guid(66c6ed06f7cd2b74a8994d43fab591c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_light.exr using Guid(66c6ed06f7cd2b74a8994d43fab591c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e99ab2f8437a131f4da54e75e164cae') in 0.003988 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000097 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_shadowmask.png
+  artifactKey: Guid(f88f82160f31669468e65555146b0f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_shadowmask.png using Guid(f88f82160f31669468e65555146b0f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '483591d73aa870253d1946fd03c7f9dd') in 0.004926 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000098 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_shadowmask.png
+  artifactKey: Guid(f600890d3f2f1764d9c7af51f2e7710a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_shadowmask.png using Guid(f600890d3f2f1764d9c7af51f2e7710a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69679c28a8ff9639de3a2c3afd2bef71') in 0.008655 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000106 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_dir.png
+  artifactKey: Guid(63c6f0028e1c6514e8e4d0262b46ab2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_dir.png using Guid(63c6f0028e1c6514e8e4d0262b46ab2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2166441f96e3aad67b6e95992fadbc3') in 0.006286 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000092 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/ReflectionProbe-0.exr
+  artifactKey: Guid(d3c8e3a213b845240a261c0a6dfeb9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/ReflectionProbe-0.exr using Guid(d3c8e3a213b845240a261c0a6dfeb9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92df1100f978932b91fc9cb141834d1d') in 0.020174 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000104 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_dir.png
+  artifactKey: Guid(173fe64095c987c488e11b5acc64dd76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-2_comp_dir.png using Guid(173fe64095c987c488e11b5acc64dd76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'daf81663a314c69268f264cd8914dc8c') in 0.004612 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000106 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_shadowmask.png
+  artifactKey: Guid(3c482262ea76b684e8c7ba840d979da7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-1_comp_shadowmask.png using Guid(3c482262ea76b684e8c7ba840d979da7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a4e91133dac2f3d38b02611bd5e2e97') in 0.005869 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000106 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_shadowmask.png
+  artifactKey: Guid(8173ed8b062e7214282f3880ff528f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_shadowmask.png using Guid(8173ed8b062e7214282f3880ff528f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cfa7fe4314fefabcdf7e7fe86585b9f') in 0.011706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000098 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_dir.png
+  artifactKey: Guid(708f2f53b1172974799086738712b262) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-3_comp_dir.png using Guid(708f2f53b1172974799086738712b262) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1d1a31552e14cec23a2db7ac963888b') in 0.005173 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000105 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_dir.png
+  artifactKey: Guid(0e58310b352d6444d81a81d92a73f23d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_dir.png using Guid(0e58310b352d6444d81a81d92a73f23d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fc8ca0e2721b0e66e8d6f97fd150f98') in 0.005743 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000094 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_light.exr
+  artifactKey: Guid(c2481f96bc3879d47917392371eac5ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_light.exr using Guid(c2481f96bc3879d47917392371eac5ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3eaedd4276089d754ab028064344dfa') in 0.021962 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000091 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_light.exr
+  artifactKey: Guid(4e69341a92c13314f9aebbe57da9707c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_light.exr using Guid(4e69341a92c13314f9aebbe57da9707c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd5c2fde965645c17afc83b93e6cc9de') in 0.008845 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_dir.png
+  artifactKey: Guid(affca9060714d574ebc697fe02bb329b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-0_comp_dir.png using Guid(affca9060714d574ebc697fe02bb329b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e798d06ed64d97c4e00893a18163867e') in 0.004239 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000102 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_shadowmask.png
+  artifactKey: Guid(6c09f5a9106c6fd429c8271e945ec7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-4_comp_shadowmask.png using Guid(6c09f5a9106c6fd429c8271e945ec7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcbd1ebc85232f94342983b174356e62') in 0.004135 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000111 seconds.
+  path: Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_shadowmask.png
+  artifactKey: Guid(66d5bf1702fd4084fb36b30779ab6687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YooPita/Examples/MiniTv/Scenes/MiniTv/Lightmap-5_comp_shadowmask.png using Guid(66d5bf1702fd4084fb36b30779ab6687) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c9d76e44cb85a3ac4cd9b16c669d332') in 0.004446 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001451 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Domain Reload Profiling:
+	ReloadAssembly (680ms)
+		BeginReloadAssembly (79ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (565ms)
+			LoadAssemblies (61ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (178ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (224ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (121ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.7 MB.
+System memory in use after: 175.9 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4380.
+Total: 4.237000 ms (FindLiveObjects: 0.181100 ms CreateObjectMapping: 0.078000 ms MarkObjects: 3.952000 ms  DeleteObjects: 0.025000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001458 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.645 seconds
+Domain Reload Profiling:
+	ReloadAssembly (645ms)
+		BeginReloadAssembly (76ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (535ms)
+			LoadAssemblies (62ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (169ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (203ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (110ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.7 MB.
+System memory in use after: 175.9 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4383.
+Total: 3.924300 ms (FindLiveObjects: 0.162300 ms CreateObjectMapping: 0.072500 ms MarkObjects: 3.664900 ms  DeleteObjects: 0.024200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001654 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.703 seconds
+Domain Reload Profiling:
+	ReloadAssembly (703ms)
+		BeginReloadAssembly (79ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (580ms)
+			LoadAssemblies (63ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (189ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (28ms)
+			SetupLoadedEditorAssemblies (222ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (58ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.7 MB.
+System memory in use after: 176.0 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4386.
+Total: 3.942000 ms (FindLiveObjects: 0.173900 ms CreateObjectMapping: 0.074300 ms MarkObjects: 3.668900 ms  DeleteObjects: 0.024100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003370 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.16 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.033 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2034ms)
+		BeginReloadAssembly (182ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (86ms)
+		EndReloadAssembly (1735ms)
+			LoadAssemblies (128ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (618ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (64ms)
+			SetupLoadedEditorAssemblies (679ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (154ms)
+				ProcessInitializeOnLoadAttributes (362ms)
+				ProcessInitializeOnLoadMethodAttributes (148ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (21ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.16 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.7 MB.
+System memory in use after: 176.0 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4389.
+Total: 8.747700 ms (FindLiveObjects: 0.327600 ms CreateObjectMapping: 0.184800 ms MarkObjects: 8.185400 ms  DeleteObjects: 0.048300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001422 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\archive\github\RetroTVFX\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.604 seconds
+Domain Reload Profiling:
+	ReloadAssembly (605ms)
+		BeginReloadAssembly (71ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (502ms)
+			LoadAssemblies (50ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (156ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (22ms)
+			SetupLoadedEditorAssemblies (209ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (53ms)
+				ProcessInitializeOnLoadAttributes (115ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3645 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 175.7 MB.
+System memory in use after: 176.0 MB.
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 4392.
+Total: 4.022600 ms (FindLiveObjects: 0.169900 ms CreateObjectMapping: 0.064700 ms MarkObjects: 3.764600 ms  DeleteObjects: 0.022700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
