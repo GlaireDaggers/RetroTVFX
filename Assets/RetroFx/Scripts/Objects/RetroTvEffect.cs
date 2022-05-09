@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace YooPita.RetroTvFx
+namespace RetroFx
 {
     public class RetroTvEffect
     {
@@ -72,7 +72,7 @@ namespace YooPita.RetroTvFx
 
         private IVirtualRenderTexture _compositeTemp;
 
-        public void Blit(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        public void Blit(RenderTexture input, RenderTexture output)
         {
             AllocateTemporaryTextureByPreset(ref _compositeTemp);
             BlitByCurrentMode(input, output);
@@ -147,12 +147,15 @@ namespace YooPita.RetroTvFx
             {
                 if (texture != null) texture.Release();
                 texture = new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
+                texture.SetFilterMode(FilterMode.Point);
             }
         }
 
         private VirtualTemporaryRenderTexture GetTemporaryTextureByPreset()
         {
-            return new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
+            var tempTexture = new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
+            tempTexture.SetFilterMode(FilterMode.Point);
+            return tempTexture;
         }
 
         private void SetBoolKeyword(string keyword, bool enabled, ref bool keywordEnabled)
@@ -181,7 +184,7 @@ namespace YooPita.RetroTvFx
             }
         }
 
-        private void BlitByCurrentMode(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitByCurrentMode(RenderTexture input, RenderTexture output)
         {
             if (Mode == VideoMode.Composite || Mode == VideoMode.RF)
                 BlitComposite(input, output);
@@ -195,13 +198,13 @@ namespace YooPita.RetroTvFx
                 BlitComponent(input, output);
         }
 
-        private void BlitComposite(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitComposite(RenderTexture input, RenderTexture output)
         {
             IVirtualRenderTexture tempTexture1 = GetTemporaryTextureByPreset();
             IVirtualRenderTexture tempTexture2 = GetTemporaryTextureByPreset();
             IVirtualRenderTexture tempLastComposite = GetTemporaryTextureByPreset();
 
-            input.CopyTo(tempTexture1);
+            tempTexture1.CopyInside(input);
             tempTexture1.BlitTo(tempTexture2, _material, _passCompositeEncode);
             PassLastFrame(tempLastComposite, tempTexture2);
             tempTexture2.BlitTo(tempTexture1, _material, _passCompositeDecode);
@@ -212,12 +215,12 @@ namespace YooPita.RetroTvFx
             tempLastComposite.Release();
         }
 
-        private void BlitSVideo(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitSVideo(RenderTexture input, RenderTexture output)
         {
             var tempTexture = GetTemporaryTextureByPreset();
             var tempLastComposite = GetTemporaryTextureByPreset();
 
-            input.BlitTo(tempTexture, _material, _passSvideoEncode);
+            tempTexture.BlitInside(input, _material, _passSvideoEncode);
             PassLastFrame(tempLastComposite, tempTexture);
             tempTexture.BlitTo(output, _material, _passSvideoDecode);
 
@@ -225,19 +228,19 @@ namespace YooPita.RetroTvFx
             tempLastComposite.Release();
         }
 
-        private void BlitVga(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitVga(RenderTexture input, RenderTexture output)
         {
-            input.BlitTo(output, _material, _passVga);
+            Graphics.Blit(input, output, _material, _passVga);
         }
 
-        private void BlitVgaFast(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitVgaFast(RenderTexture input, RenderTexture output)
         {
-            input.CopyTo(output);
+            Graphics.Blit(input, output);
         }
 
-        private void BlitComponent(IVirtualRenderTexture input, IVirtualRenderTexture output)
+        private void BlitComponent(RenderTexture input, RenderTexture output)
         {
-            input.BlitTo(output, _material, _passComponent);
+            Graphics.Blit(input, output, _material, _passComponent);
         }
 
         private void PassLastFrame(IVirtualRenderTexture lastComposite, IVirtualRenderTexture currentComposite)
@@ -247,12 +250,12 @@ namespace YooPita.RetroTvFx
             _material.SetTexture("_LastCompositeTex", lastComposite.Texture);
         }
 
-        private void DoStretchToDisplay(IVirtualRenderTexture output)
+        private void DoStretchToDisplay(RenderTexture output)
         {
             if (StretchToDisplay)
             {
                 var temp = GetTemporaryTextureByPreset();
-                BlitQuad(output, temp);
+                BlitQuad(output, temp.Texture);
                 temp.CopyTo(output);
                 temp.Release();
             }
@@ -267,7 +270,7 @@ namespace YooPita.RetroTvFx
             }
         }
 
-        private void FitToScreenWidth(IVirtualRenderTexture output, float screenAspectRatio)
+        private void FitToScreenWidth(RenderTexture output, float screenAspectRatio)
         {
             float width = 1f;
             float height = screenAspectRatio / AspectRatio;
@@ -277,19 +280,19 @@ namespace YooPita.RetroTvFx
             BlitQuadByRectangle(
                 new Rect(0f, heightDiff * 0.5f, width, height),
                 output,
-                temp);
+                temp.Texture);
             temp.CopyTo(output);
             temp.Release();
         }
 
-        private void FitToScreenHeight(IVirtualRenderTexture output, float screenAspectRatio)
+        private void FitToScreenHeight(RenderTexture output, float screenAspectRatio)
         {
             float height = 1f;
             float width = (1f / screenAspectRatio) * AspectRatio;
             float widthDiff = 1f - width;
 
             var temp = GetTemporaryTextureByPreset();
-            BlitQuadByRectangle(new Rect(widthDiff * 0.5f, 0f, width, height), output, temp);
+            BlitQuadByRectangle(new Rect(widthDiff * 0.5f, 0f, width, height), output, temp.Texture);
             temp.CopyTo(output);
             temp.Release();
         }
@@ -302,20 +305,20 @@ namespace YooPita.RetroTvFx
                 _filterKernelTaps = new FilterKernelTaps8();
         }
 
-        private void BlitQuad(IVirtualRenderTexture sourceTexture, IVirtualRenderTexture destinationTexture)
+        private void BlitQuad(RenderTexture sourceTexture, RenderTexture destinationTexture)
         {
             BlitQuadByRectangle(new Rect(0f, 0f, 1f, 1f), sourceTexture, destinationTexture);
         }
 
-        private void BlitQuadByRectangle(Rect rectangle, IVirtualRenderTexture sourceTexture, IVirtualRenderTexture destinationTexture)
+        private void BlitQuadByRectangle(Rect rectangle, RenderTexture sourceTexture, RenderTexture destinationTexture)
         {
             GL.PushMatrix();
             GL.LoadOrtho();
 
-            RenderTexture.active = destinationTexture.Texture;
+            RenderTexture.active = destinationTexture;
             GL.Clear(true, true, Color.black);
 
-            _material.SetTexture("_MainTex", sourceTexture.Texture);
+            _material.SetTexture("_MainTex", sourceTexture);
             _material.SetPass(_passTvOverlay);
             GL.Begin(GL.QUADS);
             GL.Color(Color.white);

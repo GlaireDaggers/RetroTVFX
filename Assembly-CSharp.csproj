@@ -57,37 +57,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\RetroFx\Scripts\Objects\FilterKernelTaps8.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\OverrideAspectRatio.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\Input\LoResStandaloneInputModule.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\FadeEffect.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\Utils\GraphicsUtils.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\CRTEffect.cs" />
-    <Compile Include="Assets\Examples\CameraFx\CameraRetroTvEffect.cs" />
+    <Compile Include="Assets\Legacy\Scripts\OverrideAspectRatio.cs" />
+    <Compile Include="Assets\Legacy\Scripts\Input\LoResStandaloneInputModule.cs" />
+    <Compile Include="Assets\Legacy\Scripts\FadeEffect.cs" />
+    <Compile Include="Assets\Legacy\Scripts\Utils\GraphicsUtils.cs" />
+    <Compile Include="Assets\Legacy\Scripts\CRTEffect.cs" />
+    <Compile Include="Assets\Examples\CameraFx\Scripts\CameraRetroTvEffect.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Contracts\IVirtualRenderTexture.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Contracts\IFilterKernelTaps.cs" />
-    <Compile Include="Assets\Examples\MiniTv\Scripts\Objects\TvVideoPlayer.cs" />
-    <Compile Include="Assets\Examples\MiniTv\Scripts\Objects\RetroTvEffectPreset.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\BlitRenderTexture.cs" />
+    <Compile Include="Assets\Examples\RenerTextureFx\Scripts\Objects\TvVideoPlayer.cs" />
+    <Compile Include="Assets\Examples\Presets\RetroTvEffectPreset.cs" />
+    <Compile Include="Assets\Legacy\Scripts\BlitRenderTexture.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\VirtualRenderTexture.cs" />
-    <Compile Include="Assets\RetroFx\Legacy\Scripts\LoResEffect.cs" />
+    <Compile Include="Assets\Legacy\Scripts\LoResEffect.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\FilterKernelTaps24.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Contracts\ITvMatrices.cs" />
     <Compile Include="Assets\RetroFx\Scripts\MonoBehaviour\AudioHumEffect.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\VirtualTemporaryRenderTexture.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\TvMatrices.cs" />
-    <Compile Include="Assets\Examples\MiniTv\Scripts\Objects\ChangeTvPreset.cs" />
+    <Compile Include="Assets\Examples\RenerTextureFx\Scripts\Objects\ChangeTvPreset.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\RetroTvEffect.cs" />
-    <Compile Include="Assets\Examples\MiniTv\Scripts\Contracts\IInputSignal.cs" />
-    <Compile Include="Assets\Examples\MiniTv\Scripts\Objects\Tv.cs" />
+    <Compile Include="Assets\Examples\RenerTextureFx\Scripts\Contracts\IInputSignal.cs" />
+    <Compile Include="Assets\Examples\RenerTextureFx\Scripts\Objects\Tv.cs" />
     <Compile Include="Assets\RetroFx\Scripts\Objects\VirtualRenderTextureBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RetroFx\Resources\Shaders\ImageEffects\RetroTV.cginc" />
-    <None Include="Assets\RetroFx\Resources\Shaders\ObjectShaders\DitherShader.shader" />
-    <None Include="Assets\RetroFx\Resources\Shaders\UI\UIOverlay.shader" />
+    <None Include="Assets\Legacy\Shaders\ObjectShaders\DitherShader.shader" />
+    <None Include="Assets\Legacy\Shaders\UI\UIOverlay.shader" />
     <None Include="Assets\RetroFx\Resources\Shaders\ImageEffects\NTSCEffect.shader" />
     <None Include="Assets\RetroFx\Resources\Shaders\ImageEffects\ScreenFadeShader.shader" />
-    <None Include="Assets\RetroFx\Resources\Shaders\ObjectShaders\PS1ObjectShader.shader" />
+    <None Include="Assets\Legacy\Shaders\ObjectShaders\PS1ObjectShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace YooPita.RetroTvFx
+namespace RetroFx
 {
     public abstract class VirtualRenderTextureBase : IVirtualRenderTexture
     {

@@ -1,4 +1,4 @@
-namespace YooPita.RetroTvFx
+namespace RetroFx
 {
 	public interface IFilterKernelTaps
 	{

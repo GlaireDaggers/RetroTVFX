@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace YooPita.RetroTvFx
+namespace RetroFx
 {
     public class TvMatrices : ITvMatrices
     {
