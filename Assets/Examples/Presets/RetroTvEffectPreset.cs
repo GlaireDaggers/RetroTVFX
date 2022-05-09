@@ -11,7 +11,7 @@ namespace RetroFx.Presets
         public bool StretchToDisplay => _stretchToDisplay;
         public float AspectRatio => _aspectRatio;
         public bool EnableTvCurvature => _enableTvCurvature;
-        public float Curvature => _curvature;
+        public float Curvature => 8f - _curvature + 2f;
         public Texture2D TvOverlay => _tvOverlay;
         public bool EnablePixelMask => _enablePixelMask;
         public Texture2D PixelMaskTexture => _pixelMaskTexture;
@@ -38,7 +38,7 @@ namespace RetroFx.Presets
         [SerializeField] private float _aspectRatio = 1.33f;
         [Tooltip("Apply curvature to display")]
         [SerializeField] private bool _enableTvCurvature = false;
-        [SerializeField, Range(0f, 1f)] private float _curvature = 0f;
+        [SerializeField, Range(0f, 8f)] private float _curvature = 0f;
         [Tooltip("Overlay image applied (before curvature)")]
         [SerializeField] private Texture2D _tvOverlay;
         [SerializeField] private bool _enablePixelMask = true;

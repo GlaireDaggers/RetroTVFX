@@ -18,7 +18,7 @@ MonoBehaviour:
   _stretchToDisplay: 1
   _aspectRatio: 1.33
   _enableTvCurvature: 1
-  _curvature: 0.175
+  _curvature: 5
   _tvOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
   _enablePixelMask: 1
   _pixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}
