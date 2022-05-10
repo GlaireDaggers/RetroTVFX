@@ -1,7 +1,9 @@
 # Unity NTSC Effect (Every RP)
+
 A small collection of shaders for a range of authentic old TV effects (Composite, S-Video, RF, etc) in Unity.
 
 ## Features
+
 - All render pipelines are supported.
 - Safe for integration. Uses namespaces.
 - Easy to use. Just give it two textures: input and output.
@@ -11,12 +13,16 @@ A small collection of shaders for a range of authentic old TV effects (Composite
 
 ## Demonstration
 
+This is the most popular example of dithering!
 ![alt text](https://github.com/YooPita/Unity-NTSC-FX/blob/master/Images/md_sonic_demo.png)
 
+TV example. It's called "RenerTextureFx" and is located in the "Examples" folder.
 ![alt text](https://github.com/YooPita/Unity-NTSC-FX/blob/master/Images/tv_demo.png)
 
+Screen effect example. It's called "CameraFx" and is located in the "Examples" folder.
 ![alt text](https://github.com/YooPita/Unity-NTSC-FX/blob/master/Images/tv_fx_2d_widescreen_demo.png)
 
 ## About
+
 - NTSC effect shader by @GlaireDaggers
-- Architecture & examples by @YooPita
+- Code architecture && examples by @YooPita
