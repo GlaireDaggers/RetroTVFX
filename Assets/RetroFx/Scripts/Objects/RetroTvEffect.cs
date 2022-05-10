@@ -6,8 +6,8 @@ namespace RetroFx
     {
         public RetroTvEffect()
         {
-            var shader = Shader.Find("Hidden/NTSCEffect");
-            _material = new Material(shader);
+            var ntscEffectShader = Shader.Find("Hidden/NtscEffect");
+            _ntscEffectMaterial = new Material(ntscEffectShader);
         }
 
         public VideoMode Mode = VideoMode.Composite;
@@ -24,7 +24,7 @@ namespace RetroFx
         public Texture2D TvOverlay;
         public bool EnablePixelMask = true;
         public Texture2D PixelMaskTexture;
-        public Vector2 MaskRepeat = new Vector2(160, 90);
+        public Vector2 PixelPerMask = new Vector2(1, 1);
         [Range(1f, 2f)] public float PixelMaskBrightness = 1f;
         public Vector2 IqOffset = Vector2.zero;
         public Vector2 IqScale = Vector2.one;
@@ -40,6 +40,9 @@ namespace RetroFx
         [Range(0f, 1f)] public float RollingFlickerFactor = 0.25f;
         [Range(0f, 2f)] public float RollingVSyncTime = 1f;
         public FilterKernelTaps FilterKernel = FilterKernelTaps.FilterKernelTaps8;
+        public bool SmoothRender = true;
+
+        private float CalculatedCurvature => Curvature;
 
         private const int _passCompositeEncode = 0;
         private const int _passCompositeDecode = 1;
@@ -53,7 +56,7 @@ namespace RetroFx
 
         private const int _passTvOverlay = 3;
 
-        private Material _material;
+        private Material _ntscEffectMaterial;
 
         private int _frameCount = 0;
 
@@ -93,47 +96,47 @@ namespace RetroFx
             SetBoolKeyword("QUANTIZE_RGB", QuantizeRGB, ref _quantizeRGBEnabled);
             SetBoolKeyword("RF_SIGNAL", Mode == VideoMode.RF, ref _rfEnabled);
 
-            _material.SetMatrix("_RGB2YIQ_MAT", _tvMatrices.Rgb2yiqMatrix);
-            _material.SetMatrix("_YIQ2RGB_MAT", _tvMatrices.Yiq2rgbMatrix);
+            _ntscEffectMaterial.SetMatrix("_RGB2YIQ_MAT", _tvMatrices.Rgb2yiqMatrix);
+            _ntscEffectMaterial.SetMatrix("_YIQ2RGB_MAT", _tvMatrices.Yiq2rgbMatrix);
 
-            _material.SetTexture("_OverlayImg", TvOverlay);
+            _ntscEffectMaterial.SetTexture("_OverlayImg", TvOverlay);
 
-            _material.SetFloatArray("_LumaFilter", _filterKernelTaps.LumaFilter);
-            _material.SetFloatArray("_ChromaFilter", _filterKernelTaps.ChromaFilter);
-            _material.SetFloat("_Realtime", Time.realtimeSinceStartup);
+            _ntscEffectMaterial.SetFloatArray("_LumaFilter", _filterKernelTaps.LumaFilter);
+            _ntscEffectMaterial.SetFloatArray("_ChromaFilter", _filterKernelTaps.ChromaFilter);
+            _ntscEffectMaterial.SetFloat("_Realtime", Time.realtimeSinceStartup);
 
-            _material.SetVector("_IQOffset", new Vector4(IqScale.x, IqScale.y, IqOffset.x, IqOffset.y));
+            _ntscEffectMaterial.SetVector("_IQOffset", new Vector4(IqScale.x, IqScale.y, IqOffset.x, IqOffset.y));
 
-            _material.SetFloat("_RFNoise", RfNoise);
-            _material.SetFloat("_LumaSharpen", LumaSharpen);
+            _ntscEffectMaterial.SetFloat("_RFNoise", RfNoise);
+            _ntscEffectMaterial.SetFloat("_LumaSharpen", LumaSharpen);
 
-            _material.SetInt("_Framecount", -_frameCount);
-            _material.SetVector("_ScreenSize", new Vector4(Width, Height, 1f / Width, 1f / Height));
+            _ntscEffectMaterial.SetInt("_Framecount", -_frameCount);
+            _ntscEffectMaterial.SetVector("_ScreenSize", new Vector4(Width, Height, 1f / Width, 1f / Height));
 
-            _material.SetFloat("_RollingFlickerAmount", RollingFlickerFactor);
-            _material.SetVector("_FlickerOffs", new Vector4(_flickerOffset, _flickerOffset + RollingVSyncTime, 0f, 0f));
+            _ntscEffectMaterial.SetFloat("_RollingFlickerAmount", RollingFlickerFactor);
+            _ntscEffectMaterial.SetVector("_FlickerOffs", new Vector4(_flickerOffset, _flickerOffset + RollingVSyncTime, 0f, 0f));
 
-            _material.SetVector("_PixelMaskScale", new Vector4(MaskRepeat.x, MaskRepeat.y));
-            _material.SetTexture("_PixelMask", PixelMaskTexture);
-            _material.SetFloat("_Brightness", PixelMaskBrightness);
+            _ntscEffectMaterial.SetVector("_PixelMaskScale", new Vector4(Width / PixelPerMask.x, Height / PixelPerMask.y));
+            _ntscEffectMaterial.SetTexture("_PixelMask", PixelMaskTexture);
+            _ntscEffectMaterial.SetFloat("_Brightness", PixelMaskBrightness);
 
-            _material.SetFloat("_TVCurvature", Curvature);
+            _ntscEffectMaterial.SetFloat("_TVCurvature", CalculatedCurvature);
         }
 
         private void LastUpdate()
         {
-            _material.SetFloat("_Realtime", Time.realtimeSinceStartup);
+            _ntscEffectMaterial.SetFloat("_Realtime", Time.realtimeSinceStartup);
 
             if (EnableBurstCountAnimation)
             {
                 _frameCount = (_frameCount + 1) % 3;
-                _material.SetInt("_Framecount", -_frameCount);
+                _ntscEffectMaterial.SetInt("_Framecount", -_frameCount);
             }
 
             if (EnableRollingFlicker)
             {
                 _flickerOffset += RollingVSyncTime;
-                _material.SetVector("_FlickerOffs", new Vector4(
+                _ntscEffectMaterial.SetVector("_FlickerOffs", new Vector4(
                 _flickerOffset,
                 _flickerOffset + RollingVSyncTime,
                 0f,
@@ -143,18 +146,18 @@ namespace RetroFx
 
         private void AllocateTemporaryTextureByPreset(ref IVirtualRenderTexture texture)
         {
-            if (texture == null || texture.Width != Width || texture.Height != Height)
+            if (texture == null || !texture.CheckCompatibility(Width, Height))
             {
                 if (texture != null) texture.Release();
                 texture = new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
-                texture.SetFilterMode(FilterMode.Point);
+                texture.SetFilterMode(CalculateFilterMode());
             }
         }
 
-        private VirtualTemporaryRenderTexture GetTemporaryTextureByPreset()
+        private VirtualTemporaryRenderTexture GetTemporaryTextureByTexture(RenderTexture renderTexture)
         {
-            var tempTexture = new VirtualTemporaryRenderTexture(Width, Height, 24, RenderTextureFormat.ARGBHalf);
-            tempTexture.SetFilterMode(FilterMode.Point);
+            var tempTexture = new VirtualTemporaryRenderTexture(renderTexture.width, renderTexture.height, 24, RenderTextureFormat.ARGBHalf);
+            tempTexture.SetFilterMode(CalculateFilterMode());
             return tempTexture;
         }
 
@@ -163,9 +166,9 @@ namespace RetroFx
             if (enabled != keywordEnabled)
             {
                 if (enabled)
-                    _material.EnableKeyword(keyword);
+                    _ntscEffectMaterial.EnableKeyword(keyword);
                 else
-                    _material.DisableKeyword(keyword);
+                    _ntscEffectMaterial.DisableKeyword(keyword);
             }
 
             keywordEnabled = enabled;
@@ -179,8 +182,8 @@ namespace RetroFx
 
                 Vector4 oneOverQuantize = new Vector4(1f / quantize.x, 1f / quantize.y, 1f / quantize.z, 1f);
 
-                _material.SetVector("_QuantizeRGB", quantize);
-                _material.SetVector("_OneOverQuantizeRGB", oneOverQuantize);
+                _ntscEffectMaterial.SetVector("_QuantizeRGB", quantize);
+                _ntscEffectMaterial.SetVector("_OneOverQuantizeRGB", oneOverQuantize);
             }
         }
 
@@ -200,15 +203,15 @@ namespace RetroFx
 
         private void BlitComposite(RenderTexture input, RenderTexture output)
         {
-            IVirtualRenderTexture tempTexture1 = GetTemporaryTextureByPreset();
-            IVirtualRenderTexture tempTexture2 = GetTemporaryTextureByPreset();
-            IVirtualRenderTexture tempLastComposite = GetTemporaryTextureByPreset();
+            IVirtualRenderTexture tempTexture1 = GetTemporaryTextureByTexture(output);
+            IVirtualRenderTexture tempTexture2 = GetTemporaryTextureByTexture(output);
+            IVirtualRenderTexture tempLastComposite = GetTemporaryTextureByTexture(output);
 
             tempTexture1.CopyInside(input);
-            tempTexture1.BlitTo(tempTexture2, _material, _passCompositeEncode);
+            tempTexture1.BlitTo(tempTexture2, _ntscEffectMaterial, _passCompositeEncode);
             PassLastFrame(tempLastComposite, tempTexture2);
-            tempTexture2.BlitTo(tempTexture1, _material, _passCompositeDecode);
-            tempTexture1.BlitTo(output, _material, _passCompositeFinal);
+            tempTexture2.BlitTo(tempTexture1, _ntscEffectMaterial, _passCompositeDecode);
+            tempTexture1.BlitTo(output, _ntscEffectMaterial, _passCompositeFinal);
 
             tempTexture1.Release();
             tempTexture2.Release();
@@ -217,12 +220,12 @@ namespace RetroFx
 
         private void BlitSVideo(RenderTexture input, RenderTexture output)
         {
-            var tempTexture = GetTemporaryTextureByPreset();
-            var tempLastComposite = GetTemporaryTextureByPreset();
+            var tempTexture = GetTemporaryTextureByTexture(output);
+            var tempLastComposite = GetTemporaryTextureByTexture(output);
 
-            tempTexture.BlitInside(input, _material, _passSvideoEncode);
+            tempTexture.BlitInside(input, _ntscEffectMaterial, _passSvideoEncode);
             PassLastFrame(tempLastComposite, tempTexture);
-            tempTexture.BlitTo(output, _material, _passSvideoDecode);
+            tempTexture.BlitTo(output, _ntscEffectMaterial, _passSvideoDecode);
 
             tempTexture.Release();
             tempLastComposite.Release();
@@ -230,7 +233,7 @@ namespace RetroFx
 
         private void BlitVga(RenderTexture input, RenderTexture output)
         {
-            Graphics.Blit(input, output, _material, _passVga);
+            Graphics.Blit(input, output, _ntscEffectMaterial, _passVga);
         }
 
         private void BlitVgaFast(RenderTexture input, RenderTexture output)
@@ -240,21 +243,21 @@ namespace RetroFx
 
         private void BlitComponent(RenderTexture input, RenderTexture output)
         {
-            Graphics.Blit(input, output, _material, _passComponent);
+            Graphics.Blit(input, output, _ntscEffectMaterial, _passComponent);
         }
 
         private void PassLastFrame(IVirtualRenderTexture lastComposite, IVirtualRenderTexture currentComposite)
         {
             _compositeTemp.CopyTo(lastComposite);
             currentComposite.CopyTo(_compositeTemp);
-            _material.SetTexture("_LastCompositeTex", lastComposite.Texture);
+            _ntscEffectMaterial.SetTexture("_LastCompositeTex", lastComposite.Texture);
         }
 
         private void DoStretchToDisplay(RenderTexture output)
         {
             if (StretchToDisplay)
             {
-                var temp = GetTemporaryTextureByPreset();
+                var temp = GetTemporaryTextureByTexture(output);
                 BlitQuad(output, temp.Texture);
                 temp.CopyTo(output);
                 temp.Release();
@@ -276,7 +279,7 @@ namespace RetroFx
             float height = screenAspectRatio / AspectRatio;
             float heightDiff = 1f - height;
 
-            var temp = GetTemporaryTextureByPreset();
+            var temp = GetTemporaryTextureByTexture(output);
             BlitQuadByRectangle(
                 new Rect(0f, heightDiff * 0.5f, width, height),
                 output,
@@ -291,7 +294,7 @@ namespace RetroFx
             float width = (1f / screenAspectRatio) * AspectRatio;
             float widthDiff = 1f - width;
 
-            var temp = GetTemporaryTextureByPreset();
+            var temp = GetTemporaryTextureByTexture(output);
             BlitQuadByRectangle(new Rect(widthDiff * 0.5f, 0f, width, height), output, temp.Texture);
             temp.CopyTo(output);
             temp.Release();
@@ -318,8 +321,8 @@ namespace RetroFx
             RenderTexture.active = destinationTexture;
             GL.Clear(true, true, Color.black);
 
-            _material.SetTexture("_MainTex", sourceTexture);
-            _material.SetPass(_passTvOverlay);
+            _ntscEffectMaterial.SetTexture("_MainTex", sourceTexture);
+            _ntscEffectMaterial.SetPass(_passTvOverlay);
             GL.Begin(GL.QUADS);
             GL.Color(Color.white);
             GL.TexCoord2(0, 0);
@@ -336,6 +339,11 @@ namespace RetroFx
             GL.End();
 
             GL.PopMatrix();
+        }
+
+        private FilterMode CalculateFilterMode()
+        {
+            return SmoothRender ? FilterMode.Trilinear : FilterMode.Point;
         }
 
         public enum VideoMode

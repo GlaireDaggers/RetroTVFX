@@ -10,12 +10,16 @@ namespace RetroFx.RenerTextureFx
         [SerializeField] private int _screenHeight = 800;
         [SerializeField] private TvVideoPlayer _videoPlayer;
         [SerializeField] private RetroTvEffectPreset _preset;
+        [SerializeField] private bool _smoothOutputTexture = true;
+        [SerializeField] private bool _smoothFxRender = true;
 
         private VirtualRenderTexture _outputTexture;
         private RetroTvEffect _effect;
+        private bool _currentSmoothOutputTexture;
 
         private void Awake()
         {
+            _currentSmoothOutputTexture = _smoothOutputTexture;
             CreateRetroTvEffectFromPreset();
             AllocateOutputTexture();
         }
@@ -44,10 +48,12 @@ namespace RetroFx.RenerTextureFx
 
         private void AllocateOutputTexture()
         {
-            if (_outputTexture == null || !_outputTexture.CheckCompatibility(_screenWidth, _screenHeight))
+            if (_outputTexture == null || !_outputTexture.CheckCompatibility(_screenWidth, _screenHeight) || _currentSmoothOutputTexture != _smoothOutputTexture)
             {
+                _currentSmoothOutputTexture = _smoothOutputTexture;
                 VirtualRenderTexture.AllocateTexture(ref _outputTexture, _screenWidth, _screenHeight, 24, RenderTextureFormat.ARGBHalf);
-                _outputTexture.SetFilterMode(FilterMode.Point);
+                if (!_currentSmoothOutputTexture)
+                    _outputTexture.SetFilterMode(FilterMode.Point);
                 _targerMaterial.mainTexture = _outputTexture.Texture;
                 _targerMaterial.SetTexture("_EmissionMap", _outputTexture.Texture);
             }
@@ -80,7 +86,7 @@ namespace RetroFx.RenerTextureFx
             _effect.TvOverlay = _preset.TvOverlay;
             _effect.EnablePixelMask = _preset.EnablePixelMask;
             _effect.PixelMaskTexture = _preset.PixelMaskTexture;
-            _effect.MaskRepeat = _preset.MaskRepeat;
+            _effect.PixelPerMask = _preset.PixelPerMask;
             _effect.PixelMaskBrightness = _preset.PixelMaskBrightness;
             _effect.IqOffset = _preset.IqOffset;
             _effect.IqScale = _preset.IqScale;
@@ -95,6 +101,7 @@ namespace RetroFx.RenerTextureFx
             _effect.EnableRollingFlicker = _preset.EnableRollingFlicker;
             _effect.RollingFlickerFactor = _preset.RollingFlickerFactor;
             _effect.RollingVSyncTime = _preset.RollingVSyncTime;
+            _effect.SmoothRender = _smoothFxRender;
 
             _effect.UpdateValues();
         }

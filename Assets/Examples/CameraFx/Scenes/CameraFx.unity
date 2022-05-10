@@ -255,13 +255,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enable: 1
-  _smooth: 0
-  _preset: {fileID: 11400000, guid: 80330f79a2389ca43a3fcb6b40f65ebf, type: 2}
+  _smoothOutputTexture: 1
+  _smoothFxRender: 1
+  _preset: {fileID: 11400000, guid: f5f4cd6e303c38948b7cb81f926046b9, type: 2}
   _width: 256
   _height: 240
-  _resolutionMultiplier: 2
+  _scaleMultiplayer: 3
   _autoWidth: 1
   _stretchToDisplay: 1
+  _filterKernelTaps: 0
 --- !u!1 &232335577
 GameObject:
   m_ObjectHideFlags: 0

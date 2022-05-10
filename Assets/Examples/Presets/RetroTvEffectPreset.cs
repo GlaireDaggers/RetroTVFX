@@ -11,11 +11,11 @@ namespace RetroFx.Presets
         public bool StretchToDisplay => _stretchToDisplay;
         public float AspectRatio => _aspectRatio;
         public bool EnableTvCurvature => _enableTvCurvature;
-        public float Curvature => 8f - _curvature + 2f;
+        public float Curvature => _curvature;
         public Texture2D TvOverlay => _tvOverlay;
         public bool EnablePixelMask => _enablePixelMask;
         public Texture2D PixelMaskTexture => _pixelMaskTexture;
-        public Vector2 MaskRepeat => _maskRepeat;
+        public Vector2 PixelPerMask => _pixelPerMask;
         public float PixelMaskBrightness => _pixelMaskBrightness;
         public Vector2 IqOffset => _iqOffset;
         public Vector2 IqScale => _iqScale;
@@ -38,12 +38,12 @@ namespace RetroFx.Presets
         [SerializeField] private float _aspectRatio = 1.33f;
         [Tooltip("Apply curvature to display")]
         [SerializeField] private bool _enableTvCurvature = false;
-        [SerializeField, Range(0f, 8f)] private float _curvature = 0f;
+        [SerializeField, Range(0f, 1f)] private float _curvature = 0f;
         [Tooltip("Overlay image applied (before curvature)")]
         [SerializeField] private Texture2D _tvOverlay;
         [SerializeField] private bool _enablePixelMask = true;
         [SerializeField] private Texture2D _pixelMaskTexture;
-        [SerializeField] private Vector2 _maskRepeat = new Vector2(160, 90);
+        [SerializeField] private Vector2 _pixelPerMask = new Vector2(1, 1);
         [SerializeField, Range(1f, 2f)] private float _pixelMaskBrightness = 1f;
         [SerializeField] private Vector2 _iqOffset = Vector2.zero;
         [SerializeField] private Vector2 _iqScale = Vector2.one;

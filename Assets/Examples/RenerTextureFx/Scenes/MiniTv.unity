@@ -13233,7 +13233,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1929189101}
   - component: {fileID: 1929189100}
-  - component: {fileID: 1929189102}
   m_Layer: 0
   m_Name: Tv
   m_TagString: Untagged
@@ -13254,10 +13253,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targerMaterial: {fileID: 2100000, guid: ad529e84ea0e30b4bb4b35b31ef60a90, type: 2}
-  _screenWidth: 1024
-  _screenHeight: 960
+  _screenWidth: 768
+  _screenHeight: 720
   _videoPlayer: {fileID: 1330174180}
   _preset: {fileID: 11400000, guid: 2f7be2221baac164cb2afc9215021dd7, type: 2}
+  _smoothOutputTexture: 1
 --- !u!4 &1929189101
 Transform:
   m_ObjectHideFlags: 0
@@ -13274,21 +13274,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -20.92, z: 0}
---- !u!114 &1929189102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929189099}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59723908945e4a14c83e05c55ecc6fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _humCycle: 60
-  _humAmount: 0.0001
-  _noiseAmount: 0
 --- !u!1 &1939863993
 GameObject:
   m_ObjectHideFlags: 0

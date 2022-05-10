@@ -1,4 +1,4 @@
-﻿Shader "Hidden/NTSCEffect"
+﻿Shader "Hidden/NtscEffect"
 {
 	Properties
 	{

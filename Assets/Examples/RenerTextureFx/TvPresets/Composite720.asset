@@ -18,12 +18,12 @@ MonoBehaviour:
   _stretchToDisplay: 1
   _aspectRatio: 1.33
   _enableTvCurvature: 1
-  _curvature: 5
+  _curvature: 0.3
   _tvOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
   _enablePixelMask: 1
   _pixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}
-  _maskRepeat: {x: 128, y: 120}
-  _pixelMaskBrightness: 1.5
+  _pixelPerMask: {x: 8, y: 8}
+  _pixelMaskBrightness: 1.3
   _iqOffset: {x: 0, y: 0}
   _iqScale: {x: 1, y: 1}
   _rfNoise: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
   _gBits: 8
   _bBits: 8
   _enableBurstCountAnimation: 1
-  _antiFlicker: 1
-  _enableRollingFlicker: 1
+  _antiFlicker: 0
+  _enableRollingFlicker: 0
   _rollingFlickerFactor: 0.158
   _rollingVSyncTime: 1.1

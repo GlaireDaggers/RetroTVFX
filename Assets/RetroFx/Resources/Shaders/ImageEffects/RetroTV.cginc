@@ -269,17 +269,25 @@ fixed4 frag_component(v2f i) : SV_Target
 fixed4 frag_tv_overlay(v2f i) : SV_Target
 {
 #if defined(USE_TV_CURVATURE)
-	float2 remappedUv = UnityStereoScreenSpaceUVAdjust(i.uv, _MainTex_ST);
-	remappedUv = remappedUv * 2 - 1;
-	float2 offset = abs(remappedUv.yx) / float2(_TVCurvature, _TVCurvature);
-	remappedUv = remappedUv + remappedUv * offset * offset;
-    remappedUv = remappedUv * 0.5 + 0.5;
+	half2 coords = i.uv;
+	coords = (coords - 0.5) * 2.0;
 
-	half3 color = tex2D(_MainTex, remappedUv).rgb * tex2D(_OverlayImg, remappedUv).rgb;
-	frag_pixel_mask(remappedUv, color);
-	if (remappedUv.x < 0.0 || remappedUv.y < 0.0 || remappedUv.x > 1.0 || remappedUv.y > 1.0)
+	float2 intensity = float2(_TVCurvature, _TVCurvature) * 0.1;
+
+	half2 realCoordOffs;
+	realCoordOffs.x = (coords.y * coords.y) * intensity.y * (coords.x);
+	realCoordOffs.y = (coords.x * coords.x) * intensity.x * (coords.y);
+
+	float2 uv = UnityStereoScreenSpaceUVAdjust(i.uv + realCoordOffs, _MainTex_ST);
+
+	half3 color = tex2D(_MainTex, uv).rgb
+		* tex2D(_OverlayImg, uv).rgb;
+
+	frag_pixel_mask(uv * _PixelMaskScale.xy, color);
+
+	if (uv.x < 0.0 || uv.y < 0.0 || uv.x > 1.0 || uv.y > 1.0)
 	{
-		color = float3(0, 0, 0);	
+		color = float3(0, 0, 0);
 	}
 	return float4(color, 1.0);
 #else

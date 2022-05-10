@@ -3,32 +3,35 @@ using UnityEngine;
 
 namespace RetroFx.CameraFx
 {
-    //[ExecuteInEditMode, RequireComponent(typeof(Camera))]
+    [RequireComponent(typeof(Camera))]
     public class CameraRetroTvEffect : MonoBehaviour
     {
         private int Width => _autoWidth ? _calculatedWidth : _width;
 
         [SerializeField] private bool _enable = true;
-        [SerializeField] private bool _smooth = true;
+        [SerializeField] private bool _smoothOutputTexture = true;
+        [SerializeField] private bool _smoothFxRender = true;
         [SerializeField] private RetroTvEffectPreset _preset;
         [SerializeField] private int _width = 256;
         [SerializeField] private int _height = 240;
-        [SerializeField, Range(1f, 4f)] private float _resolutionMultiplier = 1f;
+        [SerializeField, Range(1f, 5f)] float _scaleMultiplayer = 1f;
         [SerializeField] private bool _autoWidth = false;
         [SerializeField] private bool _stretchToDisplay = false;
+        [SerializeField] private RetroTvEffect.FilterKernelTaps _filterKernelTaps = RetroTvEffect.FilterKernelTaps.FilterKernelTaps8;
 
         private RetroTvEffect _effect;
         private Camera _camera;
         private VirtualRenderTexture _outputTexture;
         private VirtualRenderTexture _cameraTargetTexture;
         private int _calculatedWidth = 0;
-        private bool _currentSmooth;
+        private bool _currentSmoothOutputTexture;
 
         private void Awake()
         {
-            _currentSmooth = _smooth;
+            _currentSmoothOutputTexture = _smoothOutputTexture;
             CalculateWidth();
             Inicialize();
+            UpdateFilterKernelTaps();
             AllocateOutputTexture();
             AllocateCameraTargetTexture();
             UpdateEffectValuesByPresset();
@@ -37,10 +40,12 @@ namespace RetroFx.CameraFx
 
         private void FixedUpdate()
         {
+            UpdateFilterKernelTaps();
+
             CalculateWidth();
-            if (_cameraTargetTexture.Width != Width || _cameraTargetTexture.Height != _height || _currentSmooth != _smooth)
+            if (_cameraTargetTexture.Width != Width || _cameraTargetTexture.Height != _height || _currentSmoothOutputTexture != _smoothOutputTexture)
                 AllocateCameraTargetTexture();
-            if (_outputTexture.Width != Screen.width || _outputTexture.Height != Screen.height || _currentSmooth != _smooth)
+            if (_outputTexture.Width != Screen.width || _outputTexture.Height != Screen.height || _currentSmoothOutputTexture != _smoothOutputTexture)
                 AllocateOutputTexture();
 
             if (_enable)
@@ -76,7 +81,9 @@ namespace RetroFx.CameraFx
                 Screen.height,
                 24,
                 RenderTextureFormat.ARGBHalf);
-            CalculateRenderMode(ref _outputTexture);
+
+            _currentSmoothOutputTexture = _smoothOutputTexture;
+            if (!_smoothOutputTexture) _outputTexture.SetFilterMode(FilterMode.Point);
         }
 
         private void AllocateCameraTargetTexture()
@@ -92,17 +99,11 @@ namespace RetroFx.CameraFx
             _camera.targetTexture = _cameraTargetTexture.Texture;
         }
 
-        private void CalculateRenderMode(ref VirtualRenderTexture texture)
-        {
-            _currentSmooth = _smooth;
-            if (!_currentSmooth) texture.SetFilterMode(FilterMode.Point);
-        }
-
         private void UpdateEffectValuesByPresset()
         {
             _effect.Mode = _preset.VideoMode;
-            _effect.Width = (int)(Width * _resolutionMultiplier);
-            _effect.Height = (int)(_height * _resolutionMultiplier);
+            _effect.Width = (int)Mathf.Floor(Width * _scaleMultiplayer);
+            _effect.Height = (int)Mathf.Floor(_height * _scaleMultiplayer);
             _effect.StretchToDisplay = _preset.StretchToDisplay;
             _effect.AspectRatio = _preset.AspectRatio;
             _effect.EnableTvCurvature = _preset.EnableTvCurvature;
@@ -110,10 +111,7 @@ namespace RetroFx.CameraFx
             _effect.TvOverlay = _preset.TvOverlay;
             _effect.EnablePixelMask = _preset.EnablePixelMask;
             _effect.PixelMaskTexture = _preset.PixelMaskTexture;
-            _effect.MaskRepeat = new Vector2(
-                _effect.Width / 2,
-                _effect.Height / 2
-                );
+            _effect.PixelPerMask = _preset.PixelPerMask;
             _effect.PixelMaskBrightness = _preset.PixelMaskBrightness;
             _effect.IqOffset = _preset.IqOffset;
             _effect.IqScale = _preset.IqScale;
@@ -128,6 +126,7 @@ namespace RetroFx.CameraFx
             _effect.EnableRollingFlicker = _preset.EnableRollingFlicker;
             _effect.RollingFlickerFactor = _preset.RollingFlickerFactor;
             _effect.RollingVSyncTime = _preset.RollingVSyncTime;
+            _effect.SmoothRender = _smoothFxRender;
 
             _effect.UpdateValues();
         }
@@ -155,6 +154,14 @@ namespace RetroFx.CameraFx
                 var height = _height * factor;
                 var verticalOffset = (Screen.height - (height)) / 2f;
                 return new Rect(0, verticalOffset, Screen.width, height);
+            }
+        }
+
+        private void UpdateFilterKernelTaps()
+        {
+            if (_effect.FilterKernel != _filterKernelTaps)
+            {
+                _effect.FilterKernel = _filterKernelTaps;
             }
         }
     }
