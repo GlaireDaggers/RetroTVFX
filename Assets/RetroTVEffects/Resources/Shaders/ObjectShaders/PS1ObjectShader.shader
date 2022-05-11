@@ -53,7 +53,7 @@
 			{
 				v2f o;
 
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 
 				float2 res = float2(_ResolutionX, _ResolutionY) * 0.5;
 				res /= o.vertex.w;

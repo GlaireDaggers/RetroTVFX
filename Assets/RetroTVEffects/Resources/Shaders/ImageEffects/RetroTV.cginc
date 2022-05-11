@@ -93,7 +93,7 @@ struct v2f
 v2f vert_tv(appdata v)
 {
 	v2f o;
-	o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+	o.vertex = UnityObjectToClipPos(v.vertex);
 	o.uv = v.uv;
 
 	float2 invUV = float2(o.uv.x, 1 - o.uv.y);
