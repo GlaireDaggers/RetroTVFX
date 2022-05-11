@@ -5,11 +5,11 @@ namespace RetroTVFX
 {
     public class GraphicsUtils
     {
-        private static Material defaultBlit = new Material(Shader.Find("Hidden/BlitCopy"));
+        private static Material _defaultBlit = new Material(Shader.Find("Hidden/BlitCopy"));
 
         public static void Blit( Rect rect, RenderTexture src, RenderTexture dest)
         {
-            Blit(rect, src, dest, defaultBlit, -1);
+            Blit(rect, src, dest, _defaultBlit, -1);
         }
 
         public static void Blit(RenderTexture src, RenderTexture dest, Material material, int pass)
@@ -19,6 +19,8 @@ namespace RetroTVFX
 
         public static void Blit(Rect rect, RenderTexture src, RenderTexture dest, Material material, int pass)
         {
+            // TODO: this should probably be changed to a Mesh + a Graphics.DrawMesh call, but this works for now
+
             GL.PushMatrix();
             GL.LoadOrtho();
 

@@ -10,7 +10,7 @@ namespace RetroTVFX.Extras
         public bool OverrideAspect = true;
         public float AspectRatio = 1f;
 
-        private Camera myCam;
+        private Camera _cam;
 
         void LateUpdate()
         {
@@ -19,15 +19,15 @@ namespace RetroTVFX.Extras
 
         void OnPreCull()
         {
-            if (myCam == null)
+            if (_cam == null)
             {
-                myCam = GetComponent<Camera>();
+                _cam = GetComponent<Camera>();
             }
 
             if (OverrideAspect)
-                myCam.aspect = AspectRatio;
+                _cam.aspect = AspectRatio;
             else
-                myCam.ResetAspect();
+                _cam.ResetAspect();
         }
     }
 }

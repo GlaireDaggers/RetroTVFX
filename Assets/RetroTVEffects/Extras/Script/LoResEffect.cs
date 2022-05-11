@@ -17,7 +17,7 @@ namespace RetroTVFX.Extras
         public Camera MainCam;
         public Camera[] CamArray;
 
-        private RenderTexture tempTex;
+        private RenderTexture _tempTex;
 
         void OnDestroy()
         {
@@ -26,17 +26,17 @@ namespace RetroTVFX.Extras
 
         void cleanupTempTex()
         {
-            if (tempTex != null)
+            if (_tempTex != null)
             {
-                if (Application.isPlaying) Destroy(tempTex);
-                else DestroyImmediate(tempTex);
+                if (Application.isPlaying) Destroy(_tempTex);
+                else DestroyImmediate(_tempTex);
             }
         }
 
         void createTempTex( int depth, RenderTextureFormat format )
         {
             cleanupTempTex();
-            tempTex = new RenderTexture(ScreenResX, ScreenResY, depth, format);
+            _tempTex = new RenderTexture(ScreenResX, ScreenResY, depth, format);
         }
 
         void OnRenderImage(RenderTexture src, RenderTexture dest)
@@ -47,7 +47,7 @@ namespace RetroTVFX.Extras
                 return;
             }
 
-            if (tempTex == null || tempTex.width != ScreenResX || tempTex.height != ScreenResY)
+            if (_tempTex == null || _tempTex.width != ScreenResX || _tempTex.height != ScreenResY)
             {
                 createTempTex(src.depth, src.format);
             }
@@ -55,10 +55,10 @@ namespace RetroTVFX.Extras
             float baseAspect = (float)ScreenResX / (float)ScreenResY;
             float aspect = OverrideAspect ? CamAspect : baseAspect;
             
-            tempTex.filterMode = PointFilter ? FilterMode.Point : FilterMode.Bilinear;
+            _tempTex.filterMode = PointFilter ? FilterMode.Point : FilterMode.Bilinear;
 
             this.MainCam.aspect = aspect;
-            this.MainCam.targetTexture = tempTex;
+            this.MainCam.targetTexture = _tempTex;
             this.MainCam.Render();
 
             if (CamArray != null)
@@ -66,12 +66,12 @@ namespace RetroTVFX.Extras
                 for (int i = 0; i < CamArray.Length; i++)
                 {
                     CamArray[i].aspect = aspect;
-                    CamArray[i].targetTexture = tempTex;
+                    CamArray[i].targetTexture = _tempTex;
                     CamArray[i].Render();
                 }
             }
 
-            Graphics.Blit(tempTex, dest);
+            Graphics.Blit(_tempTex, dest);
         }
     }
 }

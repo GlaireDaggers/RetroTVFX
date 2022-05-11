@@ -16,10 +16,10 @@ namespace UnityEngine.EventSystems
 		public bool StretchToDisplay = false;
 		public float DisplayAspect = 1.33f;
 
-		private float m_NextAction;
+		private float _nextAction;
 
-		private Vector2 m_LastMousePosition;
-		private Vector2 m_MousePosition;
+		private Vector2 _lastMousePosition;
+		private Vector2 _mousePosition;
 
 		protected LoResStandaloneInputModule()
 		{ }
@@ -108,8 +108,8 @@ namespace UnityEngine.EventSystems
 
 		public override void UpdateModule()
 		{
-			m_LastMousePosition = m_MousePosition;
-			m_MousePosition = Input.mousePosition;
+			_lastMousePosition = _mousePosition;
+			_mousePosition = Input.mousePosition;
 		}
 
 		public override bool IsModuleSupported()
@@ -129,7 +129,7 @@ namespace UnityEngine.EventSystems
 			shouldActivate |= Input.GetButtonDown(m_CancelButton);
 			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_HorizontalAxis), 0.0f);
 			shouldActivate |= !Mathf.Approximately(Input.GetAxisRaw(m_VerticalAxis), 0.0f);
-			shouldActivate |= (m_MousePosition - m_LastMousePosition).sqrMagnitude > 0.0f;
+			shouldActivate |= (_mousePosition - _lastMousePosition).sqrMagnitude > 0.0f;
 			shouldActivate |= Input.GetMouseButtonDown(0);
 			return shouldActivate;
 		}
@@ -137,8 +137,8 @@ namespace UnityEngine.EventSystems
 		public override void ActivateModule()
 		{
 			base.ActivateModule();
-			m_MousePosition = Input.mousePosition;
-			m_LastMousePosition = Input.mousePosition;
+			_mousePosition = Input.mousePosition;
+			_lastMousePosition = Input.mousePosition;
 
 			var toSelect = eventSystem.currentSelectedGameObject;
 			//if (toSelect == null)
@@ -193,7 +193,7 @@ namespace UnityEngine.EventSystems
 		{
 			bool allow = Input.GetButtonDown(m_HorizontalAxis);
 			allow |= Input.GetButtonDown(m_VerticalAxis);
-			allow |= (time > m_NextAction);
+			allow |= (time > _nextAction);
 			return allow;
 		}
 
@@ -238,7 +238,7 @@ namespace UnityEngine.EventSystems
 			{
 				ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, axisEventData, ExecuteEvents.moveHandler);
 			}
-			m_NextAction = time + 1f / m_InputActionsPerSecond;
+			_nextAction = time + 1f / m_InputActionsPerSecond;
 			return axisEventData.used;
 		}
 

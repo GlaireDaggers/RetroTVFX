@@ -18,7 +18,7 @@ namespace RetroTVFX.Examples
 
         private bool toggle = true;
         
-        private VideoType currentMode = VideoType.RF;
+        private VideoType _currentMode = VideoType.RF;
 
         public void Toggle()
         {
@@ -33,28 +33,28 @@ namespace RetroTVFX.Examples
 
         public void NextMode()
         {
-            if (currentMode == VideoType.RF)
+            if (_currentMode == VideoType.RF)
             {
-                currentMode = VideoType.Composite;
+                _currentMode = VideoType.Composite;
                 ModeText.text = "MODE: COMPOSITE";
             }
-            else if (currentMode == VideoType.Composite)
+            else if (_currentMode == VideoType.Composite)
             {
-                currentMode = VideoType.SVideo;
+                _currentMode = VideoType.SVideo;
                 ModeText.text = "MODE: S-VIDEO";
             }
-            else if (currentMode == VideoType.SVideo)
+            else if (_currentMode == VideoType.SVideo)
             {
-                currentMode = VideoType.VGA;
+                _currentMode = VideoType.VGA;
                 ModeText.text = "MODE: VGA/SCART";
             }
-            else if (currentMode == VideoType.VGA)
+            else if (_currentMode == VideoType.VGA)
             {
-                currentMode = VideoType.RF;
+                _currentMode = VideoType.RF;
                 ModeText.text = "MODE: RF";
             }
 
-            CRTEffect.VideoMode = currentMode;
+            CRTEffect.VideoMode = _currentMode;
         }
     }
 }

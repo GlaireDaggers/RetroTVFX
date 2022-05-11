@@ -18,39 +18,39 @@ namespace RetroTVFX.Examples
 
 		public UIOptionChangedEvent OnOptionChanged = new UIOptionChangedEvent();
 
-		private int currentSelection = 0;
+		private int _currentSelection = 0;
 
 		void Start()
 		{
-			currentSelection = DefaultOption;
+			_currentSelection = DefaultOption;
 			updateCurrentOption();
 		}
 
 		public void Previous()
 		{
-			currentSelection--;
-			if (currentSelection < 0)
-				currentSelection = 0;
+			_currentSelection--;
+			if (_currentSelection < 0)
+				_currentSelection = 0;
 
 			updateCurrentOption();
 
-			OnOptionChanged.Invoke(currentSelection);
+			OnOptionChanged.Invoke(_currentSelection);
 		}
 
 		public void Next()
 		{
-			currentSelection++;
-			if (currentSelection >= Options.Length)
-				currentSelection = Options.Length - 1;
+			_currentSelection++;
+			if (_currentSelection >= Options.Length)
+				_currentSelection = Options.Length - 1;
 
 			updateCurrentOption();
 
-			OnOptionChanged.Invoke(currentSelection);
+			OnOptionChanged.Invoke(_currentSelection);
 		}
 
 		void updateCurrentOption()
 		{
-			CurrentOptionLabel.text = Options[currentSelection];
+			CurrentOptionLabel.text = Options[_currentSelection];
 		}
 	}
 }

@@ -13,32 +13,32 @@ namespace RetroTVFX.Extras
 		[Range(0f, 0.001f)]
 		public float NoiseAmount = 0;
 
-		private float sampleRate = 48000f;
+		private float _sampleRate = 48000f;
 
-		private float phase;
+		private float _phase;
 
-		private System.Random rand = new System.Random();
+		private System.Random _rand = new System.Random();
 
 		// Use this for initialization
 		void Start()
 		{
-			sampleRate = AudioSettings.outputSampleRate;
+			_sampleRate = AudioSettings.outputSampleRate;
 		}
 
 		void OnAudioFilterRead(float[] data, int channels)
 		{
-			float increment = HumCycle * Mathf.PI / sampleRate;
+			float increment = HumCycle * Mathf.PI / _sampleRate;
 			for (int i = 0; i < data.Length; i += channels)
 			{
-				phase += increment;
+				_phase += increment;
 
-				float val = Mathf.Sin(phase);
+				float val = Mathf.Sin(_phase);
 				if (val >= 0f) val = 1f;
 				else val = -1f;
 
 				val *= HumAmount;
 
-				float noise = (float)((rand.NextDouble() * 2.0) - 1.0);
+				float noise = (float)((_rand.NextDouble() * 2.0) - 1.0);
 				noise *= NoiseAmount;
 
 				for (int c = 0; c < channels; c++)
@@ -46,7 +46,7 @@ namespace RetroTVFX.Extras
 					data[i + c] += val + noise;
 				}
 
-				if (phase > 2 * Mathf.PI) phase = 0f;
+				if (_phase > 2 * Mathf.PI) _phase = 0f;
 			}
 		}
 	}

@@ -17,14 +17,14 @@ namespace RetroTVFX.Extras
         [Range(0f, 1f)]
         public float FadeFactor = 0f;
         
-        private Material mat;
+        private Material _mat;
 
         void OnDisable()
         {
             if (Application.isPlaying)
-                Destroy(mat);
+                Destroy(_mat);
             else
-                DestroyImmediate(mat);
+                DestroyImmediate(_mat);
         }
 
         float eval(float input, float start, float end)
@@ -34,18 +34,18 @@ namespace RetroTVFX.Extras
 
         void OnRenderImage(RenderTexture src, RenderTexture dest)
         {
-            if (mat == null)
-                mat = new Material(FadeShader);
+            if (_mat == null)
+                _mat = new Material(FadeShader);
 
             float sep = FadeSeparation * 0.66f;
             float r = eval(FadeFactor, 0f, 1f - sep);
             float g = eval(FadeFactor, sep * 0.5f, 1f - (sep * 0.5f));
             float b = eval(FadeFactor, sep, 1f);
 
-            mat.SetColor("_FadeColor", FadeColor);
-            mat.SetVector("_FadeFactor", new Vector4(r, g, b, 0.0f));
+            _mat.SetColor("_FadeColor", FadeColor);
+            _mat.SetVector("_FadeFactor", new Vector4(r, g, b, 0.0f));
 
-            Graphics.Blit(src, dest, mat, 0);
+            Graphics.Blit(src, dest, _mat, 0);
         }
     }
 }
