@@ -1,2 +1,5 @@
 Library/
 Temp/
+Logs/
+obj/
+UserSettings/

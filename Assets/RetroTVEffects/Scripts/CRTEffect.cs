@@ -305,9 +305,9 @@ namespace JetFistGames.RetroTVFX
             if (compositeTemp == null || compositeTemp.width != DisplaySizeX || compositeTemp.height != DisplaySizeY)
             {
                 if (compositeTemp != null)
-                    RenderTexture.ReleaseTemporary(compositeTemp);
+                    Destroy(compositeTemp);
 
-                compositeTemp = RenderTexture.GetTemporary(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
+                compositeTemp = new RenderTexture(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
             }
 
             if (QuantizeRGB)
