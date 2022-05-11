@@ -1,9 +1,8 @@
-﻿namespace JetFistGames.RetroTVFX
+﻿using UnityEngine;
+using System.Collections;
+
+namespace RetroTVFX
 {
-
-    using UnityEngine;
-    using System.Collections;
-
     public class GraphicsUtils
     {
         private static Material defaultBlit = new Material(Shader.Find("Hidden/BlitCopy"));
@@ -46,5 +45,4 @@
             GL.PopMatrix();
         }
     }
-
 }

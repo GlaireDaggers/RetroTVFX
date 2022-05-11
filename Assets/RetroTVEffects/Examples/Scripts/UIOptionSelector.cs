@@ -4,50 +4,53 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class UIOptionChangedEvent : UnityEvent<int> { }
-
-public class UIOptionSelector : MonoBehaviour
+namespace RetroTVFX.Examples
 {
-	public string[] Options;
-	public Text CurrentOptionLabel;
+	[System.Serializable]
+	public class UIOptionChangedEvent : UnityEvent<int> { }
 
-	public int DefaultOption = 0;
-
-	public UIOptionChangedEvent OnOptionChanged = new UIOptionChangedEvent();
-
-	private int currentSelection = 0;
-
-	void Start()
+	public class UIOptionSelector : MonoBehaviour
 	{
-		currentSelection = DefaultOption;
-		updateCurrentOption();
-	}
+		public string[] Options;
+		public Text CurrentOptionLabel;
 
-	public void Previous()
-	{
-		currentSelection--;
-		if (currentSelection < 0)
-			currentSelection = 0;
+		public int DefaultOption = 0;
 
-		updateCurrentOption();
+		public UIOptionChangedEvent OnOptionChanged = new UIOptionChangedEvent();
 
-		OnOptionChanged.Invoke(currentSelection);
-	}
+		private int currentSelection = 0;
 
-	public void Next()
-	{
-		currentSelection++;
-		if (currentSelection >= Options.Length)
-			currentSelection = Options.Length - 1;
+		void Start()
+		{
+			currentSelection = DefaultOption;
+			updateCurrentOption();
+		}
 
-		updateCurrentOption();
+		public void Previous()
+		{
+			currentSelection--;
+			if (currentSelection < 0)
+				currentSelection = 0;
 
-		OnOptionChanged.Invoke(currentSelection);
-	}
+			updateCurrentOption();
 
-	void updateCurrentOption()
-	{
-		CurrentOptionLabel.text = Options[currentSelection];
+			OnOptionChanged.Invoke(currentSelection);
+		}
+
+		public void Next()
+		{
+			currentSelection++;
+			if (currentSelection >= Options.Length)
+				currentSelection = Options.Length - 1;
+
+			updateCurrentOption();
+
+			OnOptionChanged.Invoke(currentSelection);
+		}
+
+		void updateCurrentOption()
+		{
+			CurrentOptionLabel.text = Options[currentSelection];
+		}
 	}
 }

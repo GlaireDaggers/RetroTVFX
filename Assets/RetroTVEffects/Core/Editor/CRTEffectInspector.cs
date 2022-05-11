@@ -3,12 +3,12 @@ using UnityEditor;
 using System.Collections;
 
 using UnityEditor.AnimatedValues;
-
-using JetFistGames.RetroTVFX;
+using RetroTVFX;
 
 [CustomEditor(typeof(CRTEffect))]
 public class CRTEffectInspector : Editor
 {
+    SerializedProperty filterQuality;
     SerializedProperty videoMode;
 
     SerializedProperty displaySizeX;
@@ -56,6 +56,12 @@ public class CRTEffectInspector : Editor
     AnimBool showQuantizeRGB;
     AnimBool showRFNoise;
 
+    private string[] filterQualityNames = new string[]
+    {
+        "8 Taps",
+        "24 Taps",
+    };
+
     private string[] videoModes = new string[]
     {
         "RF",
@@ -75,6 +81,7 @@ public class CRTEffectInspector : Editor
 
     void OnEnable()
     {
+        filterQuality = serializedObject.FindProperty("FilterQuality");
         videoMode = serializedObject.FindProperty("VideoMode");
 
         displaySizeX = serializedObject.FindProperty("DisplaySizeX");
@@ -130,6 +137,7 @@ public class CRTEffectInspector : Editor
     {
         serializedObject.Update();
 
+        filterQuality.enumValueIndex = EditorGUILayout.Popup("Filter Quality", filterQuality.enumValueIndex, filterQualityNames);
         videoMode.enumValueIndex = EditorGUILayout.Popup("Video Mode", videoMode.enumValueIndex, videoModes);
 
         showQuantizeRGB.target = videoMode.enumValueIndex != (int)VideoType.VGAFast;

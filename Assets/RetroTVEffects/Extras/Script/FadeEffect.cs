@@ -1,9 +1,8 @@
-﻿namespace JetFistGames.RetroTVFX
+﻿using UnityEngine;
+using System.Collections;
+
+namespace RetroTVFX.Extras
 {
-
-    using UnityEngine;
-    using System.Collections;
-
     [ExecuteInEditMode]
     public class FadeEffect : MonoBehaviour
     {
@@ -49,5 +48,4 @@
             Graphics.Blit(src, dest, mat, 0);
         }
     }
-
 }

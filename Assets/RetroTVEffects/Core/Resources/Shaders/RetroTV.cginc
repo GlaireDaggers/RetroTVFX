@@ -28,9 +28,6 @@
 #define COMPOSITE_LOWPASS 1.0
 #endif
 
-#define LOWPASS_TAPS 8
-//#define LOWPASS_TAPS 24
-
 #define SVIDEO_LOWPASS 1.0
 // ====================
 
@@ -58,8 +55,9 @@ float4 _FlickerOffs;
 
 float _SignalFilter[9];
 
-float _LumaFilter[LOWPASS_TAPS + 1];
-float _ChromaFilter[LOWPASS_TAPS + 1];
+float _LumaFilter[32];
+float _ChromaFilter[32];
+int _FilterSize;
 
 float4 _IQOffset;
 
@@ -207,17 +205,17 @@ fixed4 frag_composite_decode(v2f i) : SV_Target
 	float one_x = _ScreenSize.z * COMPOSITE_LOWPASS;
 	float3 signal = float3(0.0, 0.0, 0.0);
 
-	for (int idx = 0; idx < LOWPASS_TAPS; idx++)
+	for (int idx = 0; idx < _FilterSize; idx++)
 	{
 		float offset = float(idx);
 
-		float3 sums = fetch_offset(i.uv, offset - float(LOWPASS_TAPS), one_x) +
-			fetch_offset(i.uv, (float)LOWPASS_TAPS - offset, one_x);
+		float3 sums = fetch_offset(i.uv, offset - float(_FilterSize), one_x) +
+			fetch_offset(i.uv, (float)_FilterSize - offset, one_x);
 
 		signal += sums * float3(_LumaFilter[idx], _ChromaFilter[idx], _ChromaFilter[idx]);
 	}
 	signal += fetch_signal(i.uv) *
-		float3(_LumaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS]);
+		float3(_LumaFilter[_FilterSize], _ChromaFilter[_FilterSize], _ChromaFilter[_FilterSize]);
 
 	signal += YIQOFFSET;
 
@@ -322,17 +320,17 @@ fixed4 frag_svideo_decode(v2f i) : SV_Target
 	float one_x = _ScreenSize.z * COMPOSITE_LOWPASS;
 	float3 signal = float3(0.0, 0.0, 0.0);
 
-	for (int idx = 0; idx < LOWPASS_TAPS; idx++)
+	for (int idx = 0; idx < _FilterSize; idx++)
 	{
 		float offset = float(idx);
 
-		float3 sums = fetch_offset(i.uv, offset - float(LOWPASS_TAPS), one_x) +
-			fetch_offset(i.uv, (float)LOWPASS_TAPS - offset, one_x);
+		float3 sums = fetch_offset(i.uv, offset - float(_FilterSize), one_x) +
+			fetch_offset(i.uv, (float)_FilterSize - offset, one_x);
 
 		signal += sums * float3(0.0, _ChromaFilter[idx], _ChromaFilter[idx]);
 	}
 	signal += fetch_signal(i.uv) *
-		float3(1.0, _ChromaFilter[LOWPASS_TAPS], _ChromaFilter[LOWPASS_TAPS]);
+		float3(1.0, _ChromaFilter[_FilterSize], _ChromaFilter[_FilterSize]);
 
 	signal += YIQOFFSET;
 

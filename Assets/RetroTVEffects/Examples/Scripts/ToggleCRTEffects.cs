@@ -3,56 +3,58 @@ using System.Collections;
 
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using RetroTVFX;
 
-using JetFistGames.RetroTVFX;
-
-public class ToggleCRTEffects : MonoBehaviour
+namespace RetroTVFX.Examples
 {
-    public CRTEffect CRTEffect;
-
-    public LoResStandaloneInputModule InputModule;
-
-    public Text ToggleText;
-    public Text ModeText;
-
-    private bool toggle = true;
-    
-    private VideoType currentMode = VideoType.RF;
-
-    public void Toggle()
+    public class ToggleCRTEffects : MonoBehaviour
     {
-        toggle = !toggle;
+        public CRTEffect CRTEffect;
 
-        ToggleText.text = toggle ? "DISABLE CRT MODE" : "ENABLE CRT MODE";
+        public LoResStandaloneInputModule InputModule;
+
+        public Text ToggleText;
+        public Text ModeText;
+
+        private bool toggle = true;
         
-        CRTEffect.enabled = toggle;
-        InputModule.FisheyeX = toggle ? CRTEffect.Curvature : 0f;
-        InputModule.FisheyeY = toggle ? CRTEffect.Curvature : 0f;
-    }
+        private VideoType currentMode = VideoType.RF;
 
-    public void NextMode()
-    {
-        if (currentMode == VideoType.RF)
+        public void Toggle()
         {
-            currentMode = VideoType.Composite;
-            ModeText.text = "MODE: COMPOSITE";
-        }
-        else if (currentMode == VideoType.Composite)
-        {
-            currentMode = VideoType.SVideo;
-            ModeText.text = "MODE: S-VIDEO";
-        }
-        else if (currentMode == VideoType.SVideo)
-        {
-            currentMode = VideoType.VGA;
-            ModeText.text = "MODE: VGA/SCART";
-        }
-        else if (currentMode == VideoType.VGA)
-        {
-            currentMode = VideoType.RF;
-            ModeText.text = "MODE: RF";
+            toggle = !toggle;
+
+            ToggleText.text = toggle ? "DISABLE CRT MODE" : "ENABLE CRT MODE";
+            
+            CRTEffect.enabled = toggle;
+            InputModule.FisheyeX = toggle ? CRTEffect.Curvature : 0f;
+            InputModule.FisheyeY = toggle ? CRTEffect.Curvature : 0f;
         }
 
-        CRTEffect.VideoMode = currentMode;
+        public void NextMode()
+        {
+            if (currentMode == VideoType.RF)
+            {
+                currentMode = VideoType.Composite;
+                ModeText.text = "MODE: COMPOSITE";
+            }
+            else if (currentMode == VideoType.Composite)
+            {
+                currentMode = VideoType.SVideo;
+                ModeText.text = "MODE: S-VIDEO";
+            }
+            else if (currentMode == VideoType.SVideo)
+            {
+                currentMode = VideoType.VGA;
+                ModeText.text = "MODE: VGA/SCART";
+            }
+            else if (currentMode == VideoType.VGA)
+            {
+                currentMode = VideoType.RF;
+                ModeText.text = "MODE: RF";
+            }
+
+            CRTEffect.VideoMode = currentMode;
+        }
     }
 }

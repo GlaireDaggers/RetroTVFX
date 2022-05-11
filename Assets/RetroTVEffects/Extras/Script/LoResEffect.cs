@@ -1,8 +1,8 @@
-﻿namespace JetFistGames.RetroTVFX
-{
-    using UnityEngine;
-    using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 
+namespace RetroTVFX.Extras
+{
     [ExecuteInEditMode]
     public class LoResEffect : MonoBehaviour
     {
