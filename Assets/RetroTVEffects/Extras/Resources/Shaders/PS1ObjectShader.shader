@@ -37,7 +37,7 @@
 				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 				half4 col : TEXCOORD1;
-				float3 pos : TEXCOORD2;
+				float4 pos : TEXCOORD2;
 			};
 
 			sampler2D _MainTex;
@@ -62,9 +62,9 @@
 				o.vertex.xy = floor(o.vertex.xy);
 				o.vertex.xy /= res;
 
-				o.pos = o.vertex.xyz;
+				o.pos = o.vertex;
 
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex) * o.vertex.z;
+				o.uv = TRANSFORM_TEX(v.uv, _MainTex) * o.vertex.w;
 				UNITY_TRANSFER_FOG(o,o.vertex);
 
 				float3 worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -75,7 +75,7 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				float2 uv = i.uv / i.pos.z;
+				float2 uv = i.uv / i.pos.w;
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, uv);
 				// apply fog

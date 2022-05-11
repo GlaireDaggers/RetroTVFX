@@ -154,6 +154,8 @@ namespace RetroTVFX
                 DestroyImmediate(this._material);
             }
 
+            _material = null;
+
             _antiFlickerEnabled = false;
             _rollingFlickerEnabled = false;
             _pixelMaskEnabled = false;
@@ -207,7 +209,16 @@ namespace RetroTVFX
             if (_compositeTemp == null || _compositeTemp.width != DisplaySizeX || _compositeTemp.height != DisplaySizeY)
             {
                 if (_compositeTemp != null)
-                    Destroy(_compositeTemp);
+                {
+                    if (Application.isPlaying)
+                    {
+                        Destroy(_compositeTemp);
+                    }
+                    else
+                    {
+                        DestroyImmediate(_compositeTemp);
+                    }
+                }
 
                 _compositeTemp = new RenderTexture(DisplaySizeX, DisplaySizeY, src.depth, RenderTextureFormat.ARGBHalf);
             }
