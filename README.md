@@ -1,6 +1,9 @@
 # RetroTVFX
 A small collection of shaders for a range of authentic old TV effects (Composite, S-Video, RF, etc) in Unity.
 
+## Installation
+Just copy the RetroTVEffects folder into your project's Assets directory
+
 ## Examples
 See the example scenes in RetroTVEffects/Examples/Scenes.
 * Basic shows off a minimal example with a rotating 3D cube
