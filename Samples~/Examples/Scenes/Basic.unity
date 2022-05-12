@@ -503,16 +503,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1210343834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e8614de803fad3419913a730204b7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DesiredResX: 320
+  DesiredResY: 240
+  FisheyeX: 0.188
+  FisheyeY: 0.188
+  StretchToDisplay: 0
+  DisplayAspect: 1.33
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1210343836
 MonoBehaviour:
   m_ObjectHideFlags: 0
