@@ -2,10 +2,17 @@
 A small collection of shaders for a range of authentic old TV effects (Composite, S-Video, RF, etc) in Unity.
 
 ## Installation
-Just copy the RetroTVEffects folder into your project's Assets directory
+### From Git URL
+Open the Package Manager in Unity, click the Plus icon in the upper left corner, and select "Add package from Git URL". Enter this repository's URL (`git@github.com:GlaireDaggers/RetroTVFX.git`) into the field.
+
+### From disk
+Clone this repository to your computer. Open the Package Manager in Unity, click the Plus icon in the upper left corner, and select "Add package from disk".
+Browse to where you cloned this repository to and select the "package.json" file.
+
+After the package has installed, you may optionally install the test and example assets via the Package Manager.
 
 ## Examples
-See the example scenes in RetroTVEffects/Examples/Scenes.
+See the example scenes in `Samples/RetroTVFX/[version]/Examples/Scenes`
 * Basic shows off a minimal example with a rotating 3D cube
 * PSX goes beyond basic, adding a low-res effect and wobbly PSX-esque model
 * 2D shows a demo scene of a sprite running down a hallway with onscreen controls for the CRT effect
