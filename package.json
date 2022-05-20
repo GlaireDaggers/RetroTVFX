@@ -1,0 +1,20 @@
+{
+	"name": "com.glairedaggers.retrotvfx",
+	"version": "2.0.0",
+	"description": "A small collection of shaders for a range of authentic old TV effects (Composite, S-Video, RF, etc) in Unity.",
+	"displayName": "RetroTVFX",
+	"unity": "2020.3",
+	"license": "MIT",
+	"samples": [
+		{
+			"displayName": "Examples",
+			"description": "Example assets & scenes",
+			"path": "Samples~/Examples"
+		},
+		{
+			"displayName": "Tests",
+			"description": "Test assets & scenes",
+			"path": "Samples~/Test"
+		}
+	]
+}

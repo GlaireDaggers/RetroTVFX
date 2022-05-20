@@ -1,0 +1,16 @@
+{
+    "name": "RetroTVFX.Samples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7165dbb6971e5f346914402383c073f7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
